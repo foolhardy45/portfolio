@@ -20,7 +20,10 @@
       "@spartan-ng/helm/separator": ["src/app/components/ui/ui-separator-helm"],
       "@spartan-ng/helm/badge": ["src/app/components/ui/ui-badge-helm"],
       "@spartan-ng/helm/tooltip": ["src/app/components/ui/ui-tooltip-helm"],
-      "@spartan-ng/helm/icon": ["src/app/components/ui/ui-icon-helm"]
+      "@spartan-ng/helm/icon": ["src/app/components/ui/ui-icon-helm"],
+      "@spartan-ng/helm/dialog": ["src/app/components/ui/ui-dialog-helm"],
+      "@spartan-ng/helm/sheet": ["src/app/components/ui/ui-sheet-helm"],
+      "@spartan-ng/helm/tabs": ["src/app/components/ui/ui-tabs-helm"]
     }
   },
   "angularCompilerOptions": {

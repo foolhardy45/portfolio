@@ -1,10 +1,14 @@
 export interface Project {
-  id: number;
+  id: string;
   title: string;
+  slug: string;
   description: string;
+  shortDescription: string;
   technologies: string[];
   imageUrl?: string;
   githubUrl?: string;
-  liveUrl?: string;
+  demoUrl?: string;
   featured: boolean;
+  sortOrder: number;
+  createdAt: string;
 }

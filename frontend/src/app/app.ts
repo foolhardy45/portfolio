@@ -7,9 +7,9 @@ import { FooterComponent } from './components/layout/footer/footer.component';
   selector: 'app-root',
   imports: [RouterOutlet, NavbarComponent, FooterComponent],
   template: `
-    <div class="flex min-h-dvh flex-col">
+    <div class="bg-grid-dots relative flex min-h-dvh flex-col">
       <app-navbar />
-      <main class="flex-1">
+      <main class="flex-1 pt-16">
         <router-outlet />
       </main>
       <app-footer />

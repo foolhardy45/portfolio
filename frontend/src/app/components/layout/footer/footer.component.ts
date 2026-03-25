@@ -6,37 +6,23 @@ import { lucideGithub, lucideLinkedin, lucideMail } from '@ng-icons/lucide';
   selector: 'app-footer',
   imports: [NgIcon],
   template: `
-    <footer class="border-border/40 border-t">
-      <div class="mx-auto flex max-w-5xl flex-col items-center gap-4 px-4 py-8 sm:flex-row sm:justify-between">
+    <footer class="border-border/40 relative border-t" style="box-shadow: 0 -1px 8px var(--glow)">
+      <div class="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 py-8 sm:flex-row sm:justify-between lg:px-8">
         <p class="text-muted-foreground text-sm">
-          &copy; {{ currentYear }} Tayrell Ajinca. Tous droits réservés.
+          &copy; {{ currentYear }} Tayrell Ajinca
         </p>
-        <div class="flex gap-4">
-          <a
-            href="https://github.com/tayrell"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-muted-foreground hover:text-foreground transition-colors"
-            aria-label="GitHub"
-          >
-            <ng-icon [svg]="githubIcon" class="text-xl" />
-          </a>
-          <a
-            href="https://linkedin.com/in/tayrell-ajinca"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-muted-foreground hover:text-foreground transition-colors"
-            aria-label="LinkedIn"
-          >
-            <ng-icon [svg]="linkedinIcon" class="text-xl" />
-          </a>
-          <a
-            href="mailto:contact@tayrell.dev"
-            class="text-muted-foreground hover:text-foreground transition-colors"
-            aria-label="Email"
-          >
-            <ng-icon [svg]="mailIcon" class="text-xl" />
-          </a>
+        <div class="flex items-center gap-5">
+          @for (link of socialLinks; track link.label) {
+            <a
+              [href]="link.href"
+              [target]="link.external ? '_blank' : '_self'"
+              [rel]="link.external ? 'noopener noreferrer' : ''"
+              class="text-muted-foreground hover:text-primary transition-colors duration-200"
+              [attr.aria-label]="link.label"
+            >
+              <ng-icon [svg]="link.icon" class="text-lg" />
+            </a>
+          }
         </div>
       </div>
     </footer>
@@ -44,7 +30,10 @@ import { lucideGithub, lucideLinkedin, lucideMail } from '@ng-icons/lucide';
 })
 export class FooterComponent {
   protected readonly currentYear = new Date().getFullYear();
-  protected readonly githubIcon = lucideGithub;
-  protected readonly linkedinIcon = lucideLinkedin;
-  protected readonly mailIcon = lucideMail;
+
+  protected readonly socialLinks = [
+    { href: 'https://github.com/tayrell', icon: lucideGithub, label: 'GitHub', external: true },
+    { href: 'https://linkedin.com/in/tayrell-ajinca', icon: lucideLinkedin, label: 'LinkedIn', external: true },
+    { href: 'mailto:contact@tayrell.dev', icon: lucideMail, label: 'Email', external: false },
+  ];
 }
