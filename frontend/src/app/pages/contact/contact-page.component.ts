@@ -1,46 +1,153 @@
-import { Component } from '@angular/core';
-import { HlmButtonImports } from '@spartan-ng/helm/button';
+import { Component, inject, signal } from '@angular/core';
+import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { ApiService } from '../../services/api.service';
+import { GlowCardDirective } from '../../directives/glow-card.directive';
 
 @Component({
   selector: 'app-contact-page',
-  imports: [...HlmButtonImports],
+  imports: [ReactiveFormsModule, GlowCardDirective],
   template: `
-    <section class="mx-auto max-w-lg px-4 py-16">
-      <h1 class="mb-2 text-3xl font-bold tracking-tight">Contact</h1>
-      <p class="text-muted-foreground mb-8">
-        Une question ou une proposition ? N'hésitez pas à me contacter.
+    <section class="min-h-screen px-4 sm:px-6 lg:px-8 py-20 max-w-5xl mx-auto">
+
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tight mb-4"
+          style="font-family: 'Syne', sans-serif; color: var(--foreground);">
+        Contact
+      </h1>
+      <p class="text-lg mb-12" style="color: var(--muted-foreground);">
+        Un projet en tête ? Discutons-en.
       </p>
-      <form class="space-y-4">
-        <div>
-          <label for="name" class="mb-1 block text-sm font-medium">Nom</label>
-          <input
-            id="name"
-            type="text"
-            placeholder="Votre nom"
-            class="border-input bg-background ring-ring/10 w-full rounded-lg border px-3 py-2 text-sm focus:ring-2 focus:outline-none"
-          />
+
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+
+        <!-- INFO COLUMN (2/5) -->
+        <div class="md:col-span-2 space-y-4">
+          <div appGlowCard class="card-glow rounded-2xl p-6"
+               style="background-color: var(--card); border: 1px solid var(--border);">
+            <p class="text-sm" style="color: var(--muted-foreground);">Email</p>
+            <p class="text-sm mt-1" style="color: var(--foreground);">contact&#64;tayrell.dev</p>
+          </div>
+
+          <div appGlowCard class="card-glow rounded-2xl p-6"
+               style="background-color: var(--card); border: 1px solid var(--border);">
+            <p class="text-sm" style="color: var(--muted-foreground);">Réseaux</p>
+            <div class="flex gap-4 mt-2">
+              <a href="https://github.com/tayrell" target="_blank" rel="noopener noreferrer"
+                 class="card-link text-sm">GitHub ↗</a>
+              <a href="https://linkedin.com/in/tayrell-ajinca" target="_blank" rel="noopener noreferrer"
+                 class="card-link text-sm">LinkedIn ↗</a>
+            </div>
+          </div>
+
+          <div appGlowCard class="card-glow rounded-2xl p-6"
+               style="background-color: var(--card); border: 1px solid var(--border);">
+            <p class="text-sm" style="color: var(--muted-foreground);">Disponibilité</p>
+            <div class="flex items-center gap-2 mt-2">
+              <div class="h-2 w-2 rounded-full" style="background-color: #10b981;"></div>
+              <span class="text-sm" style="color: var(--foreground);">Ouvert aux opportunités</span>
+            </div>
+          </div>
         </div>
-        <div>
-          <label for="email" class="mb-1 block text-sm font-medium">Email</label>
-          <input
-            id="email"
-            type="email"
-            placeholder="votre@email.com"
-            class="border-input bg-background ring-ring/10 w-full rounded-lg border px-3 py-2 text-sm focus:ring-2 focus:outline-none"
-          />
+
+        <!-- FORM COLUMN (3/5) -->
+        <div class="md:col-span-3">
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()"
+                appGlowCard class="card-glow rounded-2xl p-8"
+                style="background-color: var(--card); border: 1px solid var(--border);">
+
+            <div class="space-y-5">
+              <!-- Name -->
+              <div>
+                <label class="mb-1.5 block text-sm" style="color: var(--muted-foreground);">Nom</label>
+                <input formControlName="name" type="text" placeholder="Votre nom"
+                       class="contact-input w-full rounded-lg px-4 py-2.5 text-sm outline-none transition-all">
+                @if (contactForm.get('name')?.invalid && contactForm.get('name')?.touched) {
+                  <p class="mt-1 text-xs" style="color: #ef4444;">Nom requis (2 caractères minimum)</p>
+                }
+              </div>
+
+              <!-- Email -->
+              <div>
+                <label class="mb-1.5 block text-sm" style="color: var(--muted-foreground);">Email</label>
+                <input formControlName="email" type="email" placeholder="votre&#64;email.com"
+                       class="contact-input w-full rounded-lg px-4 py-2.5 text-sm outline-none transition-all">
+                @if (contactForm.get('email')?.invalid && contactForm.get('email')?.touched) {
+                  <p class="mt-1 text-xs" style="color: #ef4444;">Email valide requis</p>
+                }
+              </div>
+
+              <!-- Message -->
+              <div>
+                <label class="mb-1.5 block text-sm" style="color: var(--muted-foreground);">Message</label>
+                <textarea formControlName="message" rows="5" placeholder="Votre message..."
+                          class="contact-input w-full resize-none rounded-lg px-4 py-2.5 text-sm outline-none transition-all">
+                </textarea>
+                @if (contactForm.get('message')?.invalid && contactForm.get('message')?.touched) {
+                  <p class="mt-1 text-xs" style="color: #ef4444;">Message requis (10 caractères minimum)</p>
+                }
+              </div>
+
+              <!-- Submit -->
+              <button type="submit" [disabled]="contactForm.invalid || loading()"
+                      class="w-full rounded-lg py-2.5 text-sm font-medium transition-all disabled:opacity-50"
+                      style="background-color: var(--primary); color: var(--primary-foreground);">
+                {{ loading() ? 'Envoi en cours...' : 'Envoyer le message' }}
+              </button>
+            </div>
+
+            <!-- Success -->
+            @if (success()) {
+              <div class="mt-4 rounded-lg p-4 text-sm"
+                   style="background-color: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.2);">
+                Message envoyé avec succès !
+              </div>
+            }
+
+            <!-- Error -->
+            @if (error()) {
+              <div class="mt-4 rounded-lg p-4 text-sm"
+                   style="background-color: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.2);">
+                {{ error() }}
+              </div>
+            }
+
+          </form>
         </div>
-        <div>
-          <label for="message" class="mb-1 block text-sm font-medium">Message</label>
-          <textarea
-            id="message"
-            rows="5"
-            placeholder="Votre message..."
-            class="border-input bg-background ring-ring/10 w-full rounded-lg border px-3 py-2 text-sm focus:ring-2 focus:outline-none"
-          ></textarea>
-        </div>
-        <button hlmBtn type="submit" class="w-full">Envoyer</button>
-      </form>
+
+      </div>
     </section>
   `,
 })
-export class ContactPageComponent {}
+export class ContactPageComponent {
+  private readonly fb = inject(FormBuilder);
+  private readonly api = inject(ApiService);
+
+  protected readonly loading = signal(false);
+  protected readonly success = signal(false);
+  protected readonly error = signal<string | null>(null);
+
+  protected readonly contactForm = this.fb.nonNullable.group({
+    name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
+    email: ['', [Validators.required, Validators.email]],
+    message: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(5000)]],
+  });
+
+  protected onSubmit(): void {
+    if (this.contactForm.invalid) return;
+
+    this.loading.set(true);
+    this.success.set(false);
+    this.error.set(null);
+
+    this.api.sendContactMessage(this.contactForm.getRawValue()).subscribe({
+      next: () => {
+        this.loading.set(false);
+        this.success.set(true);
+        this.contactForm.reset();
+      },
+      error: (err: Error) => {
+        this.loading.set(false);
+        this.error.set(err.message || 'Une erreur est survenue, réessayez.');
+      },
+    });
+  }
+}

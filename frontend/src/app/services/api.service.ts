@@ -1,17 +1,14 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
 import type { Project } from '../models/project.model';
 import type { ContactForm } from '../models/contact.model';
-import type { ApiResponse } from '../models/api-response.model';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
   private readonly http = inject(HttpClient);
   private readonly baseUrl = environment.apiUrl;
-
-  // -- Generic HTTP methods --
 
   private get<T>(path: string): Observable<T> {
     return this.http.get<T>(`${this.baseUrl}${path}`).pipe(
@@ -28,25 +25,27 @@ export class ApiService {
   // -- Projects --
 
   getProjects(): Observable<Project[]> {
-    return this.get<Project[]>('/projects?all=true');
+    return this.get<{ data: Project[]; count: number }>('/projects').pipe(
+      map((res) => res.data),
+    );
   }
 
   getFeaturedProjects(): Observable<Project[]> {
-    return this.get<Project[]>('/projects');
-  }
-
-  getProjectById(id: string): Observable<Project> {
-    return this.get<Project>(`/projects/${id}`);
+    return this.get<{ data: Project[]; count: number }>('/projects?featured=true').pipe(
+      map((res) => res.data),
+    );
   }
 
   getProjectBySlug(slug: string): Observable<Project> {
-    return this.get<Project>(`/projects/slug/${slug}`);
+    return this.get<{ data: Project }>(`/projects/${slug}`).pipe(
+      map((res) => res.data),
+    );
   }
 
   // -- Contact --
 
-  sendContactMessage(data: ContactForm): Observable<ApiResponse<null>> {
-    return this.post<ApiResponse<null>>('/contact', data);
+  sendContactMessage(data: ContactForm): Observable<{ message: string }> {
+    return this.post<{ message: string }>('/contact', data);
   }
 
   // -- Health --

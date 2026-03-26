@@ -6,7 +6,7 @@ class ContactSchema(Schema):
 
     name = fields.String(
         required=True,
-        validate=validate.Length(min=1, max=200),
+        validate=validate.Length(min=2, max=100),
         error_messages={"required": "Name is required."},
     )
     email = fields.Email(
@@ -20,8 +20,8 @@ class ContactSchema(Schema):
         required=True,
         validate=validate.Length(
             min=10,
-            max=2000,
-            error="Message must be between 10 and 2000 characters.",
+            max=5000,
+            error="Message must be between 10 and 5000 characters.",
         ),
         error_messages={"required": "Message is required."},
     )

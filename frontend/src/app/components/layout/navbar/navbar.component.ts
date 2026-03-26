@@ -19,6 +19,8 @@ import { ThemeService } from '../../../services/theme.service';
   ],
   template: `
     <nav
+      role="navigation"
+      aria-label="Navigation principale"
       class="fixed top-0 z-50 w-full transition-all duration-300"
       [class.nav-scrolled]="scrolled()"
     >

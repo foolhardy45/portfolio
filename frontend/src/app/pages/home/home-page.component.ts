@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { GlowCardDirective } from '../../directives/glow-card.directive';
+import { TextRevealComponent } from '../../components/text-reveal/text-reveal.component';
 
 @Component({
   selector: 'app-home-page',
-  imports: [RouterLink],
+  imports: [RouterLink, GlowCardDirective, TextRevealComponent],
   template: `
     <section class="min-h-screen px-4 sm:px-6 lg:px-8 py-8 max-w-7xl mx-auto">
 
@@ -12,7 +14,7 @@ import { RouterLink } from '@angular/router';
 
         <!-- HERO — 2 cols × 2 rows -->
         <div
-          class="md:col-span-2 md:row-span-2 rounded-2xl p-8 flex flex-col justify-between"
+          appGlowCard class="card-glow md:col-span-2 md:row-span-2 rounded-2xl p-8 flex flex-col justify-between"
           style="background-color: var(--card); border: 1px solid var(--border);"
         >
           <div>
@@ -20,7 +22,7 @@ import { RouterLink } from '@angular/router';
               class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight"
               style="font-family: 'Syne', sans-serif; color: var(--foreground);"
             >
-              Tayrell
+              <app-text-reveal text="Tayrell" [speed]="80" />
             </h1>
             <p class="mt-2 text-xl" style="color: var(--primary);">Développeur Fullstack</p>
             <p class="mt-4 text-base max-w-md" style="color: var(--muted-foreground);">
@@ -47,7 +49,7 @@ import { RouterLink } from '@angular/router';
 
         <!-- STACK — 2 cols × 1 row -->
         <div
-          class="md:col-span-2 rounded-2xl p-6 flex flex-col justify-between"
+          appGlowCard class="card-glow md:col-span-2 rounded-2xl p-6 flex flex-col justify-between"
           style="background-color: var(--card); border: 1px solid var(--border);"
         >
           <p class="text-sm font-medium mb-3" style="color: var(--muted-foreground);">Technologies</p>
@@ -65,7 +67,7 @@ import { RouterLink } from '@angular/router';
 
         <!-- PROJETS — 1 col × 2 rows -->
         <div
-          class="md:row-span-2 rounded-2xl p-6 flex flex-col"
+          appGlowCard class="card-glow md:row-span-2 rounded-2xl p-6 flex flex-col"
           style="background-color: var(--card); border: 1px solid var(--border);"
         >
           <p class="text-sm font-medium mb-4" style="color: var(--primary);">Projets</p>
@@ -103,8 +105,8 @@ import { RouterLink } from '@angular/router';
 
         <!-- À PROPOS — 1 col × 1 row -->
         <div
-          class="rounded-2xl p-6 flex flex-col justify-between"
-          style="background-color: var(--card); border: 1px solid var(--border);"
+          appGlowCard class="card-glow rounded-2xl p-6 flex flex-col justify-between"
+          style="background-color: var(--card);"
         >
           <div>
             <p class="text-sm font-medium mb-2" style="color: var(--primary);">À propos</p>
@@ -123,8 +125,8 @@ import { RouterLink } from '@angular/router';
 
         <!-- ACTUELLEMENT — 1 col × 1 row -->
         <div
-          class="rounded-2xl p-6"
-          style="background-color: var(--card); border: 1px solid var(--border);"
+          appGlowCard class="card-glow rounded-2xl p-6"
+          style="background-color: var(--card);"
         >
           <p class="text-sm font-medium mb-3" style="color: var(--muted-foreground);">Actuellement</p>
           <div class="space-y-2">
@@ -141,8 +143,8 @@ import { RouterLink } from '@angular/router';
 
         <!-- CONTACT — 1 col × 1 row -->
         <div
-          class="rounded-2xl p-6 flex flex-col justify-between"
-          style="background-color: var(--card); border: 1px solid var(--border);"
+          appGlowCard class="card-glow rounded-2xl p-6 flex flex-col justify-between"
+          style="background-color: var(--card);"
         >
           <div>
             <p class="text-sm font-medium mb-2" style="color: var(--primary);">Contact</p>
@@ -159,8 +161,8 @@ import { RouterLink } from '@angular/router';
 
         <!-- GITHUB — 1 col × 1 row -->
         <div
-          class="rounded-2xl p-6 flex flex-col justify-between"
-          style="background-color: var(--card); border: 1px solid var(--border);"
+          appGlowCard class="card-glow rounded-2xl p-6 flex flex-col justify-between"
+          style="background-color: var(--card);"
         >
           <p class="text-sm font-medium" style="color: var(--muted-foreground);">Explorer mon code</p>
           <a

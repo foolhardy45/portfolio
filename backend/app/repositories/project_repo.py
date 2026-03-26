@@ -1,4 +1,3 @@
-import uuid
 from typing import Any
 
 from sqlalchemy import select
@@ -7,24 +6,17 @@ from app.extensions import get_connection
 from app.models.project import projects_table
 
 
-def get_all_projects(
-    featured_only: bool = True,
-    tech_filter: str | None = None,
-) -> list[dict[str, Any]]:
-    """Fetch projects from the database, sorted by display_order.
+def get_all_projects(tech_filter: str | None = None) -> list[dict[str, Any]]:
+    """Fetch all projects, sorted by sort_order.
 
     Args:
-        featured_only: If True, return only featured projects.
         tech_filter: If set, filter projects containing this technology.
 
     Returns:
         A list of project dictionaries.
     """
     conn = get_connection()
-    query = select(projects_table).order_by(projects_table.c.display_order)
-
-    if featured_only:
-        query = query.where(projects_table.c.featured.is_(True))
+    query = select(projects_table).order_by(projects_table.c.sort_order)
 
     result = conn.execute(query)
     rows = [dict(row._mapping) for row in result]
@@ -40,17 +32,33 @@ def get_all_projects(
     return rows
 
 
-def get_project_by_id(project_id: uuid.UUID) -> dict[str, Any] | None:
-    """Fetch a single project by its ID.
+def get_featured_projects() -> list[dict[str, Any]]:
+    """Fetch only featured projects, sorted by sort_order.
+
+    Returns:
+        A list of featured project dictionaries.
+    """
+    conn = get_connection()
+    query = (
+        select(projects_table)
+        .where(projects_table.c.featured.is_(True))
+        .order_by(projects_table.c.sort_order)
+    )
+    result = conn.execute(query)
+    return [dict(row._mapping) for row in result]
+
+
+def get_project_by_slug(slug: str) -> dict[str, Any] | None:
+    """Fetch a single project by its slug.
 
     Args:
-        project_id: The UUID of the project.
+        slug: The URL-friendly slug of the project.
 
     Returns:
         A project dictionary or None if not found.
     """
     conn = get_connection()
-    query = select(projects_table).where(projects_table.c.id == project_id)
+    query = select(projects_table).where(projects_table.c.slug == slug)
     result = conn.execute(query)
     row = result.first()
     if row is None:

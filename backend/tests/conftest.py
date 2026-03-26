@@ -17,7 +17,6 @@ def app() -> Generator[Flask, None, None]:
     """Create and configure a test application instance."""
     application = create_app("testing")
 
-    # Create all tables in the in-memory SQLite database
     engine = get_engine()
     metadata.create_all(engine)
 
@@ -40,39 +39,45 @@ def seeded_projects(app: Flask) -> list[dict]:
         {
             "id": uuid.uuid4(),
             "title": "Portfolio",
-            "description": "Site portfolio personnel",
+            "slug": "portfolio",
+            "short_description": "Site portfolio personnel",
+            "description": "Angular + Flask portfolio",
             "technologies": ["Angular", "Flask", "PostgreSQL"],
             "image_url": None,
             "github_url": "https://github.com/tayrell/portfolio",
-            "live_url": None,
+            "demo_url": None,
             "featured": True,
-            "display_order": 1,
+            "sort_order": 1,
             "created_at": now,
             "updated_at": now,
         },
         {
             "id": uuid.uuid4(),
             "title": "Consilia Data",
-            "description": "Plateforme de gestion de données",
+            "slug": "consilia-data",
+            "short_description": "Plateforme de données",
+            "description": "Gestion de données métier",
             "technologies": ["Python", "Flask", "PostgreSQL"],
             "image_url": None,
             "github_url": None,
-            "live_url": None,
+            "demo_url": None,
             "featured": True,
-            "display_order": 2,
+            "sort_order": 2,
             "created_at": now,
             "updated_at": now,
         },
         {
             "id": uuid.uuid4(),
             "title": "Side Project",
-            "description": "Un projet non mis en avant",
+            "slug": "side-project",
+            "short_description": "Projet non mis en avant",
+            "description": "Un projet annexe",
             "technologies": ["React", "Node.js"],
             "image_url": None,
             "github_url": None,
-            "live_url": None,
+            "demo_url": None,
             "featured": False,
-            "display_order": 3,
+            "sort_order": 3,
             "created_at": now,
             "updated_at": now,
         },

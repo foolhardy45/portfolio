@@ -1,8 +1,8 @@
-"""initial tables projects and contact_messages
+"""initial tables with slug and sort_order
 
-Revision ID: 122e929fc8fd
+Revision ID: 8a6442079d9b
 Revises: 
-Create Date: 2026-03-25 20:44:29.559519
+Create Date: 2026-03-26 02:15:33.685932
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '122e929fc8fd'
+revision = '8a6442079d9b'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -30,16 +30,19 @@ def upgrade():
     op.create_table('projects',
     sa.Column('id', sa.Uuid(), nullable=False),
     sa.Column('title', sa.String(length=200), nullable=False),
-    sa.Column('description', sa.Text(), nullable=False),
+    sa.Column('slug', sa.String(length=200), nullable=False),
+    sa.Column('short_description', sa.String(length=300), nullable=True),
+    sa.Column('description', sa.Text(), nullable=True),
     sa.Column('technologies', sa.JSON(), nullable=False),
     sa.Column('image_url', sa.String(length=500), nullable=True),
     sa.Column('github_url', sa.String(length=500), nullable=True),
-    sa.Column('live_url', sa.String(length=500), nullable=True),
+    sa.Column('demo_url', sa.String(length=500), nullable=True),
     sa.Column('featured', sa.Boolean(), nullable=False),
-    sa.Column('display_order', sa.Integer(), nullable=False),
+    sa.Column('sort_order', sa.Integer(), nullable=False),
     sa.Column('created_at', sa.DateTime(timezone=True), nullable=False),
     sa.Column('updated_at', sa.DateTime(timezone=True), nullable=False),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('slug')
     )
     # ### end Alembic commands ###
 
