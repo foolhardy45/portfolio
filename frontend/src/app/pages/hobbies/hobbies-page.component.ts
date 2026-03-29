@@ -27,7 +27,7 @@ import { GlowCardDirective } from '../../directives/glow-card.directive';
               </h2>
             </div>
             <p class="text-sm leading-relaxed max-w-lg" style="color: var(--muted-foreground);">
-              Sport d'équipe que je pratique depuis plusieurs années. Le volley m'apporte la rigueur collective,
+              Sport d'équipe que je pratique depuis plusieurs mois. Le volley m'apporte la rigueur collective,
               le dépassement de soi et un vrai esprit de compétition.
             </p>
           </div>
@@ -93,7 +93,6 @@ import { GlowCardDirective } from '../../directives/glow-card.directive';
             </div>
             <p class="text-sm leading-relaxed max-w-lg" style="color: var(--muted-foreground);">
               La musique fait partie de mon quotidien — écoute, découverte et production.
-              Le "Music" dans Tayrell Music, c'est pas juste un nom.
             </p>
           </div>
           <div class="flex flex-wrap gap-2 mt-4">
@@ -105,13 +104,12 @@ import { GlowCardDirective } from '../../directives/glow-card.directive';
             }
           </div>
         </div>
-
       </div>
     </section>
   `,
 })
 export class HobbiesPageComponent {
-  protected readonly games = ['Valorant', 'League of Legends', 'FIFA'];
+  protected readonly games = ['Valorant', 'League of Legends', 'Dead Cells', 'Guilty Gear Strive'];
   protected readonly mangas = ['One Piece', 'Jujutsu Kaisen', 'Vinland Saga'];
-  protected readonly genres = ['Rap FR', 'R&B', 'Afrobeats', 'Drill'];
+  protected readonly genres = ['Rock', 'Electro', 'Jungle', 'Drill'];
 }
