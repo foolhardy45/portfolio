@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, Response, jsonify, request
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from marshmallow import ValidationError
@@ -16,7 +16,7 @@ limiter = Limiter(
 
 @contact_bp.route("/contact", methods=["POST"])
 @limiter.limit("5 per hour")
-def submit_contact():
+def submit_contact() -> tuple[Response, int]:
     """Validate and save a contact form submission."""
     json_data = request.get_json(silent=True)
     if not json_data:

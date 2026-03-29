@@ -42,7 +42,7 @@ import { GlowCardDirective } from '../../directives/glow-card.directive';
                style="background-color: var(--card); border: 1px solid var(--border);">
             <p class="text-sm" style="color: var(--muted-foreground);">Disponibilité</p>
             <div class="flex items-center gap-2 mt-2">
-              <div class="h-2 w-2 rounded-full" style="background-color: #10b981;"></div>
+              <div class="h-2 w-2 rounded-full" style="background-color: var(--success);"></div>
               <span class="text-sm" style="color: var(--foreground);">Ouvert aux opportunités</span>
             </div>
           </div>
@@ -61,7 +61,7 @@ import { GlowCardDirective } from '../../directives/glow-card.directive';
                 <input formControlName="name" type="text" placeholder="Votre nom"
                        class="contact-input w-full rounded-lg px-4 py-2.5 text-sm outline-none transition-all">
                 @if (contactForm.get('name')?.invalid && contactForm.get('name')?.touched) {
-                  <p class="mt-1 text-xs" style="color: #ef4444;">Nom requis (2 caractères minimum)</p>
+                  <p class="mt-1 text-xs" class="form-error-text">Nom requis (2 caractères minimum)</p>
                 }
               </div>
 
@@ -71,7 +71,7 @@ import { GlowCardDirective } from '../../directives/glow-card.directive';
                 <input formControlName="email" type="email" placeholder="votre&#64;email.com"
                        class="contact-input w-full rounded-lg px-4 py-2.5 text-sm outline-none transition-all">
                 @if (contactForm.get('email')?.invalid && contactForm.get('email')?.touched) {
-                  <p class="mt-1 text-xs" style="color: #ef4444;">Email valide requis</p>
+                  <p class="mt-1 text-xs" class="form-error-text">Email valide requis</p>
                 }
               </div>
 
@@ -82,7 +82,7 @@ import { GlowCardDirective } from '../../directives/glow-card.directive';
                           class="contact-input w-full resize-none rounded-lg px-4 py-2.5 text-sm outline-none transition-all">
                 </textarea>
                 @if (contactForm.get('message')?.invalid && contactForm.get('message')?.touched) {
-                  <p class="mt-1 text-xs" style="color: #ef4444;">Message requis (10 caractères minimum)</p>
+                  <p class="mt-1 text-xs" class="form-error-text">Message requis (10 caractères minimum)</p>
                 }
               </div>
 
@@ -96,16 +96,14 @@ import { GlowCardDirective } from '../../directives/glow-card.directive';
 
             <!-- Success -->
             @if (success()) {
-              <div class="mt-4 rounded-lg p-4 text-sm"
-                   style="background-color: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.2);">
+              <div class="form-feedback-success mt-4 rounded-lg p-4 text-sm">
                 Message envoyé avec succès !
               </div>
             }
 
             <!-- Error -->
             @if (error()) {
-              <div class="mt-4 rounded-lg p-4 text-sm"
-                   style="background-color: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.2);">
+              <div class="form-feedback-error mt-4 rounded-lg p-4 text-sm">
                 {{ error() }}
               </div>
             }
