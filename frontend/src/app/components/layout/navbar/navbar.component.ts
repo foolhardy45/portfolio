@@ -140,7 +140,7 @@ export class NavbarComponent {
       filter((e): e is NavigationEnd => e instanceof NavigationEnd),
       takeUntilDestroyed(),
     ).subscribe(() => {
-      setTimeout(() => this.updateDotPosition(), 50);
+      requestAnimationFrame(() => this.updateDotPosition());
     });
 
     afterNextRender(() => {
