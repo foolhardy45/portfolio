@@ -1,3 +1,73 @@
+# Security Assessment Report
+
+## Executive Summary
+
+**Target:** http://host.docker.internal:5000
+**Assessment Date:** 2026-03-29
+**Scope:** Authentication, XSS, SQL and Command Injection, SSRF, Authorization testing
+
+### Assessment Overview
+
+The Tayrell Music Portfolio is a public-facing Flask-based portfolio website with a minimal attack surface comprising 4 unauthenticated API endpoints. The assessment identified **1 successfully exploited authorization vulnerability** related to rate limit bypass through per-worker in-memory storage. No SQL injection, command injection, SSRF, or XSS vulnerabilities were found.
+
+### Key Findings
+
+**Authorization:** Rate limit bypass on the contact form submission endpoint allows anonymous attackers to submit up to 4× the intended rate due to per-worker limiter storage in a multi-worker deployment.
+
+**Authentication:** No authentication system exists; all endpoints are publicly accessible by design.
+
+**Injection & XSS:** All user inputs are properly validated. SQL queries use parameterized statements. No command injection, SSRF, or reflected XSS vectors were identified in network-accessible code paths.
+
+## Summary by Vulnerability Type
+
+**Authentication Vulnerabilities:**
+No authentication vulnerabilities were found. The application intentionally implements no authentication system; all endpoints are anonymously accessible by design.
+
+**Authorization Vulnerabilities:**
+One authorization vulnerability was successfully exploited: rate limit bypass on `POST /api/contact` due to per-worker in-memory counter storage under a 4-worker Gunicorn deployment. Attackers can submit contact messages at up to 4× the nominal 5/hour limit.
+
+**Cross-Site Scripting (XSS) Vulnerabilities:**
+No XSS vulnerabilities were found. Input validation enforces length constraints without requiring HTML sanitization (not stored data is rendered without proper context in this codebase).
+
+**SQL/Command Injection Vulnerabilities:**
+No SQL or command injection vulnerabilities were found. All database interactions use SQLAlchemy parameterized queries. No dynamic SQL execution or shell command execution paths exist in network-accessible code.
+
+**Server-Side Request Forgery (SSRF) Vulnerabilities:**
+No SSRF vulnerabilities were found. The Flask backend makes no outbound HTTP requests and imports no HTTP client libraries.
+
+## Network Reconnaissance
+
+### Open Ports & Services
+- **Port 5000/TCP** — Flask/Gunicorn backend (directly exposed in development mode; intended to be behind nginx proxy in production)
+- **Port 80/TCP** — nginx reverse proxy (production only; not present in current development deployment)
+- **Port 5432/TCP** — PostgreSQL database (internal-only in production; exposed to host in development docker-compose.yml)
+
+### Subdomain Enumeration
+No subdomains discovered. This is a single-host deployment.
+
+### Security Headers Analysis
+**Missing critical security headers** when accessing backend directly on port 5000:
+- No `X-Frame-Options` (vulnerable to clickjacking)
+- No `X-Content-Type-Options` (vulnerable to MIME type sniffing)
+- No `Content-Security-Policy` (insufficient XSS protection)
+- No `Strict-Transport-Security` (insufficient HTTPS enforcement)
+
+*Note: These headers are configured in nginx.conf but not applied to direct backend access in current deployment.*
+
+### API Endpoints Exposed
+- `GET /api/health` — System health and database connectivity status
+- `GET /api/projects` — Project listing with optional filtering
+- `GET /api/projects/<slug>` — Single project detail retrieval
+- `POST /api/contact` — Contact form submission (rate-limited to 5/hr per IP)
+
+### CORS Configuration
+Access-Control-Allow-Origin limited to `http://localhost:4200` (Angular development frontend). Direct API access bypasses browser CORS enforcement.
+
+### Response Headers
+Backend responds with `Server: gunicorn` header, disclosing application server identity. No security headers present on direct backend access.
+
+---
+
 # Authorization Exploitation Evidence
 
 ## Successfully Exploited Vulnerabilities
