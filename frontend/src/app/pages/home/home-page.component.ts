@@ -166,13 +166,13 @@ import { TextRevealComponent } from '../../components/text-reveal/text-reveal.co
         >
           <p class="text-sm font-medium" style="color: var(--muted-foreground);">Explorer mon code</p>
           <a
-            href="https://github.com/tayrell"
+            href="https://github.com/foolhardy45"
             target="_blank"
             rel="noopener noreferrer"
             class="text-sm flex items-center gap-1 mt-2"
             style="color: var(--primary);"
           >
-            github.com/tayrell →
+            github.com/foolhardy45 →
           </a>
         </div>
 

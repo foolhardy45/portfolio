@@ -69,6 +69,7 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
         }
       </div>
 
+
       <!-- SECTION CV -->
       <div appGlowCard class="card-glow mt-16 rounded-2xl p-6 flex items-center justify-between"
            style="background-color: var(--card); border: 1px solid var(--border);">
@@ -76,13 +77,12 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
           <p class="font-medium" style="color: var(--foreground);">Mon CV</p>
           <p class="text-sm mt-1" style="color: var(--muted-foreground);">Télécharger au format PDF</p>
         </div>
-        <a href="assets/cv-tayrell.pdf" download
+        <a href="/assets/cv-tayrell.pdf" download
            class="px-5 py-2.5 rounded-lg text-sm font-medium"
            style="background-color: var(--primary); color: var(--primary-foreground);">
           Télécharger →
         </a>
       </div>
-
     </section>
   `,
 })
@@ -91,19 +91,19 @@ export class AboutPageComponent {
     {
       period: '2024 — Présent',
       title: 'Alternance Développeur Fullstack',
-      description: 'Conception et développement d\'applications web en Angular et Python au sein d\'une équipe agile.',
-      tag: 'Expérience',
+      description: 'Conception et développement d\'applications web en Angular et Python chez Consilia Data.',
+      tag: 'Expérience - Formation',
     },
     {
-      period: '2022 — 2024',
-      title: 'Formation Développement Web',
+      period: '2023 — 2026',
+      title: 'BUT Informatique en alternance',
       description: 'Formation intensive couvrant le développement frontend, backend, les bases de données et les méthodologies agiles.',
       tag: 'Formation',
     },
     {
       period: '2021 — 2022',
       title: 'Découverte du code',
-      description: 'Premiers projets personnels en Python et JavaScript, découverte de la programmation et de la logique algorithmique.',
+      description: 'Premiers projets personnels en Python et JavaScript, découverte de la programmation et de la logique algorithmique. Sur des sites comme OpenClassrooms, et en autodidacte sur GitHub.',
       tag: 'Autodidacte',
     },
   ];
@@ -112,6 +112,6 @@ export class AboutPageComponent {
     { label: 'Frontend', items: ['Angular', 'TypeScript', 'Tailwind CSS', 'Spartan UI', 'HTML/CSS'] },
     { label: 'Backend', items: ['Flask', 'Python', 'SQLAlchemy', 'REST API'] },
     { label: 'Base de données', items: ['PostgreSQL', 'SQL', 'Alembic'] },
-    { label: 'Outils & DevOps', items: ['Docker', 'Git', 'GitHub', 'Linux', 'CI/CD'] },
+    { label: 'Outils & DevOps', items: ['Docker', 'Git', 'GitHub', 'Linux'] },
   ];
 }

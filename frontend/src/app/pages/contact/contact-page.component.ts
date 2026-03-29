@@ -31,7 +31,7 @@ import { GlowCardDirective } from '../../directives/glow-card.directive';
                style="background-color: var(--card); border: 1px solid var(--border);">
             <p class="text-sm" style="color: var(--muted-foreground);">Réseaux</p>
             <div class="flex gap-4 mt-2">
-              <a href="https://github.com/tayrell" target="_blank" rel="noopener noreferrer"
+              <a href="https://github.com/foolhardy45" target="_blank" rel="noopener noreferrer"
                  class="card-link text-sm">GitHub ↗</a>
               <a href="https://linkedin.com/in/tayrell-ajinca" target="_blank" rel="noopener noreferrer"
                  class="card-link text-sm">LinkedIn ↗</a>

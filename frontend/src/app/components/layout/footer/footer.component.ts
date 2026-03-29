@@ -32,8 +32,8 @@ export class FooterComponent {
   protected readonly currentYear = new Date().getFullYear();
 
   protected readonly socialLinks = [
-    { href: 'https://github.com/tayrell', icon: lucideGithub, label: 'GitHub', external: true },
+    { href: 'https://github.com/foolhardy45', icon: lucideGithub, label: 'GitHub', external: true },
     { href: 'https://linkedin.com/in/tayrell-ajinca', icon: lucideLinkedin, label: 'LinkedIn', external: true },
-    { href: 'mailto:contact@tayrell.dev', icon: lucideMail, label: 'Email', external: false },
+    { href: 'mailto:tayrellajincapro@gmail.com', icon: lucideMail, label: 'Email', external: false },
   ];
 }
