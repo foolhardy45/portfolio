@@ -3,6 +3,7 @@ import os
 
 from flask import Flask
 from flask_cors import CORS
+from flask_mail import Mail
 from flask_migrate import Migrate
 
 from app.config import config_by_name
@@ -14,6 +15,7 @@ from app.routes.contact import limiter
 # Ensure table definitions are imported so metadata is populated
 import app.models  # noqa: F401
 
+mail = Mail()
 migrate = Migrate()
 
 
@@ -42,6 +44,7 @@ def create_app(config_name: str | None = None) -> Flask:
     # Extensions
     CORS(app, origins=app.config["CORS_ORIGINS"])
     init_db(app)
+    mail.init_app(app)
     migrate.init_app(app, db)
     limiter.init_app(app)
 
