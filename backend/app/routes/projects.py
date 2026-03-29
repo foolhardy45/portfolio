@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request, abort
+from flask import Blueprint, Response, jsonify, request, abort
 
 from app.services import project_service
 from app.schemas.project_schema import project_schema, projects_schema
@@ -7,7 +7,7 @@ projects_bp = Blueprint("projects", __name__, url_prefix="/api")
 
 
 @projects_bp.route("/projects", methods=["GET"])
-def list_projects():
+def list_projects() -> tuple[Response, int] | Response:
     """Return a list of projects.
 
     Query params:
@@ -27,7 +27,7 @@ def list_projects():
 
 
 @projects_bp.route("/projects/<slug>", methods=["GET"])
-def get_project(slug: str):
+def get_project(slug: str) -> tuple[Response, int] | Response:
     """Return a single project by slug."""
     project = project_service.get_project_by_slug(slug)
     if project is None:

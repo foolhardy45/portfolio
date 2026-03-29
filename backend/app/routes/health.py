@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 
-from flask import Blueprint, jsonify
+from flask import Blueprint, Response, jsonify
 from sqlalchemy import text
 
 from app.extensions import get_engine
@@ -9,7 +9,7 @@ health_bp = Blueprint("health", __name__, url_prefix="/api")
 
 
 @health_bp.route("/health", methods=["GET"])
-def healthcheck():
+def healthcheck() -> tuple[Response, int]:
     """Return the API health status and verify database connectivity."""
     db_ok = True
     try:
