@@ -53,11 +53,14 @@ import type { Project } from '../../models/project.model';
       <!-- Detail modal -->
       @if (selectedProject()) {
         <div class="fixed inset-0 z-50 flex items-center justify-center p-4"
-             (click)="selectedProject.set(null)">
-          <div class="fixed inset-0" style="background-color: rgba(0,0,0,0.6);"></div>
+             role="dialog" aria-modal="true"
+             (keydown.escape)="selectedProject.set(null)">
+          <button class="fixed inset-0 cursor-default border-none bg-transparent"
+                  style="background-color: rgba(0,0,0,0.6);"
+                  aria-label="Fermer"
+                  (click)="selectedProject.set(null)"></button>
           <div class="relative z-10 w-full max-w-lg rounded-2xl p-6 max-h-[80vh] overflow-y-auto"
-               style="background-color: var(--card); border: 1px solid var(--border);"
-               (click)="$event.stopPropagation()">
+               style="background-color: var(--card); border: 1px solid var(--border);">
             <button class="absolute top-4 right-4 text-lg"
                     style="color: var(--muted-foreground);"
                     (click)="selectedProject.set(null)">

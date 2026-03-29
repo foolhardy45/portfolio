@@ -57,8 +57,8 @@ import { GlowCardDirective } from '../../directives/glow-card.directive';
             <div class="space-y-5">
               <!-- Name -->
               <div>
-                <label class="mb-1.5 block text-sm" style="color: var(--muted-foreground);">Nom</label>
-                <input formControlName="name" type="text" placeholder="Votre nom"
+                <label for="contact-name" class="mb-1.5 block text-sm" style="color: var(--muted-foreground);">Nom</label>
+                <input id="contact-name" formControlName="name" type="text" placeholder="Votre nom"
                        class="contact-input w-full rounded-lg px-4 py-2.5 text-sm outline-none transition-all">
                 @if (contactForm.get('name')?.invalid && contactForm.get('name')?.touched) {
                   <p class="mt-1 text-xs" class="form-error-text">Nom requis (2 caractères minimum)</p>
@@ -67,8 +67,8 @@ import { GlowCardDirective } from '../../directives/glow-card.directive';
 
               <!-- Email -->
               <div>
-                <label class="mb-1.5 block text-sm" style="color: var(--muted-foreground);">Email</label>
-                <input formControlName="email" type="email" placeholder="votre&#64;email.com"
+                <label for="contact-email" class="mb-1.5 block text-sm" style="color: var(--muted-foreground);">Email</label>
+                <input id="contact-email" formControlName="email" type="email" placeholder="votre&#64;email.com"
                        class="contact-input w-full rounded-lg px-4 py-2.5 text-sm outline-none transition-all">
                 @if (contactForm.get('email')?.invalid && contactForm.get('email')?.touched) {
                   <p class="mt-1 text-xs" class="form-error-text">Email valide requis</p>
@@ -77,8 +77,8 @@ import { GlowCardDirective } from '../../directives/glow-card.directive';
 
               <!-- Message -->
               <div>
-                <label class="mb-1.5 block text-sm" style="color: var(--muted-foreground);">Message</label>
-                <textarea formControlName="message" rows="5" placeholder="Votre message..."
+                <label for="contact-message" class="mb-1.5 block text-sm" style="color: var(--muted-foreground);">Message</label>
+                <textarea id="contact-message" formControlName="message" rows="5" placeholder="Votre message..."
                           class="contact-input w-full resize-none rounded-lg px-4 py-2.5 text-sm outline-none transition-all">
                 </textarea>
                 @if (contactForm.get('message')?.invalid && contactForm.get('message')?.touched) {
