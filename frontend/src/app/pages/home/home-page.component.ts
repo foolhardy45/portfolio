@@ -195,7 +195,7 @@ export class HomePageComponent {
     {
       title: 'Consilia Data',
       description: 'Creation d\'un site vitrine avec gestion des offres d\'emploi',
-      tags: ['Flask', 'PostgreSQL', 'SQLAlchemy', 'Angular'],
+      tags: ['Flask', 'PostgreSQL', 'Angular'],
     },
   ];
 }
