@@ -84,14 +84,14 @@ import type { Project } from '../../models/project.model';
             <div class="flex gap-3 pt-3" style="border-top: 1px solid var(--border);">
               @if (selectedProject()!.githubUrl) {
                 <a [href]="selectedProject()!.githubUrl" target="_blank" rel="noopener noreferrer"
-                   class="px-4 py-2 rounded-lg text-sm font-medium"
-                   style="background-color: var(--secondary); color: var(--foreground);">
+                   class="px-4 py-2 rounded-lg text-sm font-medium shadow-sm hover:opacity-90 active:scale-95 transition-all"
+                   style="background-color: var(--secondary); color: var(--foreground); border: 1px solid var(--border);">
                   GitHub ↗
                 </a>
               }
               @if (selectedProject()!.demoUrl) {
                 <a [href]="selectedProject()!.demoUrl" target="_blank" rel="noopener noreferrer"
-                   class="px-4 py-2 rounded-lg text-sm font-medium"
+                   class="px-4 py-2 rounded-lg text-sm font-medium shadow-sm hover:opacity-90 active:scale-95 transition-all"
                    style="background-color: var(--primary); color: var(--primary-foreground);">
                   Demo ↗
                 </a>

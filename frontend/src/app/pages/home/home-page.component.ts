@@ -10,37 +10,37 @@ import { TextRevealComponent } from '../../components/text-reveal/text-reveal.co
     <section class="min-h-screen px-4 sm:px-6 lg:px-8 py-8 max-w-7xl mx-auto">
 
       <!-- BENTO GRID -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[180px]">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-auto md:auto-rows-[180px]">
 
         <!-- HERO — 2 cols × 2 rows -->
         <div
-          appGlowCard class="card-glow md:col-span-2 md:row-span-2 rounded-2xl p-8 flex flex-col justify-between"
+          appGlowCard class="card-glow md:col-span-2 md:row-span-2 rounded-2xl p-6 sm:p-8 flex flex-col justify-between"
           style="background-color: var(--card); border: 1px solid var(--border);"
         >
           <div>
             <h1
-              class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight"
+              class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight"
               style="font-family: 'Syne', sans-serif; color: var(--foreground);"
             >
-              <app-text-reveal text="Tayrell" [speed]="80" />
+              <app-text-reveal text="Tayrell Ajinca" [speed]="80" />
             </h1>
             <p class="mt-2 text-xl" style="color: var(--primary);">Développeur Fullstack</p>
-            <p class="mt-4 text-base max-w-md" style="color: var(--muted-foreground);">
+            <p class="mt-4 text-sm sm:text-base max-w-md" style="color: var(--muted-foreground);">
               Je conçois des applications web robustes et élégantes, du design à la mise en production.
             </p>
           </div>
           <div class="flex gap-3 mt-6">
             <a
               routerLink="/projets"
-              class="px-5 py-2.5 rounded-lg text-sm font-medium transition-all"
+              class="px-5 py-2.5 rounded-lg text-sm font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm"
               style="background-color: var(--primary); color: var(--primary-foreground);"
             >
               Voir mes projets →
             </a>
             <a
               routerLink="/contact"
-              class="px-5 py-2.5 rounded-lg text-sm font-medium transition-all"
-              style="border: 1px solid var(--border); color: var(--foreground);"
+              class="px-5 py-2.5 rounded-lg text-sm font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm"
+              style="border: 2px solid var(--primary); color: var(--primary);"
             >
               Me contacter
             </a>
@@ -96,7 +96,7 @@ import { TextRevealComponent } from '../../components/text-reveal/text-reveal.co
 
           <a
             routerLink="/projets"
-            class="text-sm mt-4 flex items-center gap-1 transition-colors"
+            class="text-sm mt-4 flex items-center gap-1 transition-colors underline underline-offset-4 decoration-1 hover:decoration-2"
             style="color: var(--primary);"
           >
             Voir tous les projets →
@@ -116,7 +116,7 @@ import { TextRevealComponent } from '../../components/text-reveal/text-reveal.co
           </div>
           <a
             routerLink="/a-propos"
-            class="text-sm mt-3 flex items-center gap-1"
+            class="text-sm mt-3 flex items-center gap-1 underline underline-offset-4 decoration-1 hover:decoration-2 transition-colors"
             style="color: var(--primary);"
           >
             En savoir plus →
@@ -152,7 +152,7 @@ import { TextRevealComponent } from '../../components/text-reveal/text-reveal.co
           </div>
           <a
             routerLink="/contact"
-            class="text-sm mt-3"
+            class="text-sm mt-3 flex items-center gap-1 underline underline-offset-4 decoration-1 hover:decoration-2 transition-colors"
             style="color: var(--primary);"
           >
             Me contacter →
@@ -169,7 +169,7 @@ import { TextRevealComponent } from '../../components/text-reveal/text-reveal.co
             href="https://github.com/foolhardy45"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-sm flex items-center gap-1 mt-2"
+            class="text-sm mt-3 flex items-center gap-1 underline underline-offset-4 decoration-1 hover:decoration-2 transition-colors"
             style="color: var(--primary);"
           >
             github.com/foolhardy45 →

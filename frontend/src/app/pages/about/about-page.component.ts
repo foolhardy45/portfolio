@@ -78,7 +78,7 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
           <p class="text-sm mt-1" style="color: var(--muted-foreground);">Télécharger au format PDF</p>
         </div>
         <a href="/assets/cv-tayrell.pdf" download
-           class="px-5 py-2.5 rounded-lg text-sm font-medium"
+           class="px-5 py-2.5 rounded-lg text-sm font-medium shadow-sm hover:opacity-90 active:scale-95 transition-all"
            style="background-color: var(--primary); color: var(--primary-foreground);">
           Télécharger →
         </a>

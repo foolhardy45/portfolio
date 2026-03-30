@@ -32,9 +32,11 @@ import { GlowCardDirective } from '../../directives/glow-card.directive';
             <p class="text-sm" style="color: var(--muted-foreground);">Réseaux</p>
             <div class="flex gap-4 mt-2">
               <a href="https://github.com/foolhardy45" target="_blank" rel="noopener noreferrer"
-                 class="card-link text-sm">GitHub ↗</a>
+                 class="card-link text-sm underline underline-offset-4 decoration-1 hover:decoration-2 transition-colors"
+                 style="color: var(--primary);">GitHub ↗</a>
               <a href="https://linkedin.com/in/tayrell-ajinca" target="_blank" rel="noopener noreferrer"
-                 class="card-link text-sm">LinkedIn ↗</a>
+                 class="card-link text-sm underline underline-offset-4 decoration-1 hover:decoration-2 transition-colors"
+                 style="color: var(--primary);">LinkedIn ↗</a>
             </div>
           </div>
 
@@ -88,9 +90,9 @@ import { GlowCardDirective } from '../../directives/glow-card.directive';
 
               <!-- Submit -->
               <button type="submit" [disabled]="contactForm.invalid || loading()"
-                      class="w-full rounded-lg py-2.5 text-sm font-medium transition-all disabled:opacity-50"
+                      class="w-full rounded-lg py-2.5 text-sm font-medium transition-all disabled:opacity-50 shadow-sm hover:opacity-90 active:scale-95"
                       style="background-color: var(--primary); color: var(--primary-foreground);">
-                {{ loading() ? 'Envoi en cours...' : 'Envoyer le message' }}
+                {{ loading() ? 'Envoi en cours...' : 'Envoyer le message →' }}
               </button>
             </div>
 
