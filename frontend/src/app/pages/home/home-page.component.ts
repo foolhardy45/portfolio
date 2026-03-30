@@ -194,8 +194,8 @@ export class HomePageComponent {
     },
     {
       title: 'Consilia Data',
-      description: 'Plateforme de gestion de données métier.',
-      tags: ['Python', 'PostgreSQL', 'SQLAlchemy'],
+      description: 'Creation d\'un site vitrine avec gestion des offres d\'emploi',
+      tags: ['Flask', 'PostgreSQL', 'SQLAlchemy', 'Angular'],
     },
   ];
 }

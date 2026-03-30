@@ -24,7 +24,7 @@ import { GlowCardDirective } from '../../directives/glow-card.directive';
           <div appGlowCard class="card-glow rounded-2xl p-6"
                style="background-color: var(--card); border: 1px solid var(--border);">
             <p class="text-sm" style="color: var(--muted-foreground);">Email</p>
-            <p class="text-sm mt-1" style="color: var(--foreground);">contact&#64;tayrell.dev</p>
+            <p class="text-sm mt-1" style="color: var(--foreground);">tayrellajincapro@gmail.com</p>
           </div>
 
           <div appGlowCard class="card-glow rounded-2xl p-6"
@@ -43,7 +43,7 @@ import { GlowCardDirective } from '../../directives/glow-card.directive';
             <p class="text-sm" style="color: var(--muted-foreground);">Disponibilité</p>
             <div class="flex items-center gap-2 mt-2">
               <div class="h-2 w-2 rounded-full" style="background-color: var(--success);"></div>
-              <span class="text-sm" style="color: var(--foreground);">Ouvert aux opportunités</span>
+              <span class="text-sm" style="color: var(--foreground);">Recherche une alternance pour 2026-2027</span>
             </div>
           </div>
         </div>

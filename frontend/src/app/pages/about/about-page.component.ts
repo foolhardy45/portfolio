@@ -14,7 +14,7 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
         À propos
       </h1>
       <p class="text-lg mb-16 max-w-2xl" style="color: var(--muted-foreground);">
-        Développeur fullstack en alternance, passionné par le craft logiciel et les interfaces soignées.
+        Développeur fullstack en alternance, curieux et polyvalent — j'aime autant construire une API que peaufiner une interface.
       </p>
 
       <!-- SECTION PARCOURS -->
@@ -90,7 +90,7 @@ export class AboutPageComponent {
   protected readonly timeline = [
     {
       period: '2024 — Présent',
-      title: 'Alternance Développeur Fullstack',
+      title: 'Alternance Développeur Fullstack chez Consilia Data',
       description: 'Conception et développement d\'applications web en Angular et Python chez Consilia Data.',
       tag: 'Expérience - Formation',
     },
@@ -106,12 +106,18 @@ export class AboutPageComponent {
       description: 'Premiers projets personnels en Python et JavaScript, découverte de la programmation et de la logique algorithmique. Sur des sites comme OpenClassrooms, et en autodidacte sur GitHub.',
       tag: 'Autodidacte',
     },
+    {
+      period: '2022',
+      title: 'BAC STI2D',
+      description: 'Diplôme obtenu en sciences et technologies de l\'industrie et du développement durable option SIN.',
+      tag: 'Formation',
+    }
   ];
 
   protected readonly skills = [
     { label: 'Frontend', items: ['Angular', 'TypeScript', 'Tailwind CSS', 'Spartan UI', 'HTML/CSS'] },
     { label: 'Backend', items: ['Flask', 'Python', 'SQLAlchemy', 'REST API'] },
-    { label: 'Base de données', items: ['PostgreSQL', 'SQL', 'Alembic'] },
+    { label: 'Base de données', items: ['PostgreSQL', 'SQL'] },
     { label: 'Outils & DevOps', items: ['Docker', 'Git', 'GitHub', 'Linux'] },
   ];
 }
