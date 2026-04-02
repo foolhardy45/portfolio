@@ -298,3 +298,154 @@ body {
 .skip-link:focus {
   top: 0;
 }
+
+/* ===== Hobbies Page — Shibuya Punk + Low Poly + Tech Specs ===== */
+
+/* Hobby color variables — Dark mode */
+:root {
+  --hobby-cyan: #06b6d4;
+  --hobby-magenta: #ec4899;
+  --hobby-lime: #84cc16;
+  --hobby-cyan-glow: rgba(6, 182, 212, 0.15);
+  --hobby-magenta-glow: rgba(236, 72, 153, 0.15);
+  --hobby-lime-glow: rgba(132, 204, 22, 0.15);
+}
+
+/* Hobby color variables — Light mode */
+.light {
+  --hobby-cyan: #06b6d4;
+  --hobby-magenta: #ec4899;
+  --hobby-lime: #84cc16;
+  --hobby-cyan-glow: rgba(6, 182, 212, 0.10);
+  --hobby-magenta-glow: rgba(236, 72, 153, 0.10);
+  --hobby-lime-glow: rgba(132, 204, 22, 0.10);
+}
+
+/* Hobby card — Shibuya Punk lift effect */
+.hobby-card {
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  position: relative;
+  transition: border-color 0.4s var(--transition-smooth),
+              box-shadow 0.4s var(--transition-smooth),
+              transform 0.4s var(--transition-smooth);
+}
+.hobby-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--card-accent-glow, var(--glow-strong));
+  box-shadow: 0 0 24px var(--card-accent-glow, var(--glow)),
+              0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Hobby card spotlight — accent-aware radial gradient */
+.hobby-card-spotlight {
+  position: relative;
+  overflow: hidden;
+}
+.hobby-card-spotlight::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  opacity: var(--spotlight-opacity, 0);
+  transition: opacity 0.4s var(--transition-smooth);
+  background: radial-gradient(
+    500px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
+    var(--card-accent-glow, rgba(245, 158, 11, 0.15)),
+    transparent 40%
+  );
+}
+
+/* Hobby animations */
+@keyframes scanline-sweep {
+  0% { top: 0%; }
+  100% { top: 100%; }
+}
+
+@keyframes glitch-flicker {
+  0% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.8; transform: translateX(-2px); }
+  94% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 1; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 12px color-mix(in srgb, var(--card-accent, var(--primary)) 10%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 20px color-mix(in srgb, var(--card-accent, var(--primary)) 25%, transparent);
+  }
+}
+
+@keyframes data-scroll {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+/* Tech specs label — monospace micro text */
+.tech-specs-label {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--card-accent, var(--muted-foreground));
+  opacity: 0.5;
+}
+
+/* Hobby tag — accent-colored pill */
+.hobby-tag {
+  display: inline-flex;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  border: 1px solid color-mix(in srgb, var(--card-accent, var(--primary)) 20%, transparent);
+  background: color-mix(in srgb, var(--card-accent, var(--primary)) 8%, transparent);
+  color: var(--card-accent, var(--primary));
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.hobby-tag:hover {
+  border-color: color-mix(in srgb, var(--card-accent, var(--primary)) 40%, transparent);
+  background: color-mix(in srgb, var(--card-accent, var(--primary)) 15%, transparent);
+}
+
+/* Low-poly triangle background pattern */
+.low-poly-bg {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cpolygon points='0,0 100,0 50,86' fill='%23ffffff' fill-opacity='0.03' stroke='%23ffffff' stroke-opacity='0.06' stroke-width='0.5'/%3E%3Cpolygon points='100,0 200,0 150,72' fill='%23ffffff' fill-opacity='0.03' stroke='%23ffffff' stroke-opacity='0.06' stroke-width='0.5'/%3E%3Cpolygon points='50,86 150,72 100,200' fill='%23ffffff' fill-opacity='0.03' stroke='%23ffffff' stroke-opacity='0.06' stroke-width='0.5'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  background-repeat: repeat;
+}
+
+/* Corner bracket decoration */
+.corner-bracket {
+  position: relative;
+}
+.corner-bracket::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 16px;
+  height: 16px;
+  border-top: 1px solid color-mix(in srgb, var(--card-accent, var(--primary)) 20%, transparent);
+  border-left: 1px solid color-mix(in srgb, var(--card-accent, var(--primary)) 20%, transparent);
+  pointer-events: none;
+}
+.corner-bracket::after {
+  content: "";
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 16px;
+  height: 16px;
+  border-bottom: 1px solid color-mix(in srgb, var(--card-accent, var(--primary)) 20%, transparent);
+  border-right: 1px solid color-mix(in srgb, var(--card-accent, var(--primary)) 20%, transparent);
+  pointer-events: none;
+}
