@@ -306,9 +306,9 @@ body {
   --hobby-cyan: #06b6d4;
   --hobby-magenta: #ec4899;
   --hobby-lime: #84cc16;
-  --hobby-cyan-glow: rgba(6, 182, 212, 0.15);
-  --hobby-magenta-glow: rgba(236, 72, 153, 0.15);
-  --hobby-lime-glow: rgba(132, 204, 22, 0.15);
+  --hobby-cyan-glow: rgba(6, 182, 212, 0.25);
+  --hobby-magenta-glow: rgba(236, 72, 153, 0.25);
+  --hobby-lime-glow: rgba(132, 204, 22, 0.25);
 }
 
 /* Hobby color variables — Light mode */
@@ -316,27 +316,50 @@ body {
   --hobby-cyan: #06b6d4;
   --hobby-magenta: #ec4899;
   --hobby-lime: #84cc16;
-  --hobby-cyan-glow: rgba(6, 182, 212, 0.10);
-  --hobby-magenta-glow: rgba(236, 72, 153, 0.10);
-  --hobby-lime-glow: rgba(132, 204, 22, 0.10);
+  --hobby-cyan-glow: rgba(6, 182, 212, 0.18);
+  --hobby-magenta-glow: rgba(236, 72, 153, 0.18);
+  --hobby-lime-glow: rgba(132, 204, 22, 0.18);
 }
 
-/* Hobby card — Shibuya Punk lift effect */
+/* Hobby card — neon border + pulse glow */
 .hobby-card {
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--card-accent, var(--primary));
   background: var(--card);
   border-radius: var(--radius-xl);
   overflow: hidden;
   position: relative;
-  transition: border-color 0.4s var(--transition-smooth),
-              box-shadow 0.4s var(--transition-smooth),
-              transform 0.4s var(--transition-smooth);
+  box-shadow: 0 0 8px var(--card-accent-glow, var(--glow)),
+              0 0 20px var(--card-accent-glow, var(--glow)),
+              inset 0 0 12px var(--card-accent-glow, var(--glow));
+  transition: box-shadow 0.4s ease, transform 0.4s ease, border-color 0.4s ease;
 }
 .hobby-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--card-accent-glow, var(--glow-strong));
-  box-shadow: 0 0 24px var(--card-accent-glow, var(--glow)),
-              0 8px 32px rgba(0, 0, 0, 0.3);
+  transform: translateY(-6px);
+  border-color: var(--card-accent, var(--primary));
+  box-shadow: 0 0 16px var(--card-accent-glow, var(--glow)),
+              0 0 48px var(--card-accent-glow, var(--glow)),
+              0 0 80px var(--card-accent-glow, var(--glow));
+}
+
+/* Neon pulse animation — runs only when motion is allowed */
+@keyframes neon-pulse {
+  0%, 100% {
+    box-shadow: 0 0 8px var(--card-accent-glow, var(--glow)),
+                0 0 20px var(--card-accent-glow, var(--glow)),
+                inset 0 0 12px var(--card-accent-glow, var(--glow));
+    border-color: var(--card-accent, var(--primary));
+  }
+  50% {
+    box-shadow: 0 0 14px var(--card-accent-glow, var(--glow)),
+                0 0 36px var(--card-accent-glow, var(--glow)),
+                inset 0 0 18px var(--card-accent-glow, var(--glow));
+    border-color: var(--card-accent, var(--primary));
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hobby-card {
+    animation: neon-pulse 3s ease-in-out infinite;
+  }
 }
 
 /* Hobby card spotlight — accent-aware radial gradient */
@@ -502,6 +525,7 @@ body {
   }
   .hobby-card {
     transition: none;
+    animation: none !important;
   }
   .shibuya-glitch-text::before,
   .shibuya-glitch-text::after {
