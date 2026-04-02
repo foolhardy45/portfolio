@@ -26,7 +26,9 @@ interface HobbyData {
 
       <!-- HEADER -->
       <header class="mb-12">
-        <span class="tech-specs-label">PAGE_04 // HOBBIES</span>
+        <span class="tech-specs-label fade-in" style="animation-delay: 0.5s">
+          PAGE_04 // HOBBIES
+        </span>
 
         <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mt-3 letter-reveal"
             style="color: var(--foreground)">
@@ -46,7 +48,7 @@ interface HobbyData {
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-5">
         @for (hobby of hobbies; track hobby.techId) {
           <app-hobby-card
-            [class]="'grid min-h-[320px] lg:min-h-[400px] ' + hobby.gridClass"
+            [class]="'grid min-h-[280px] lg:min-h-[400px] ' + hobby.gridClass"
             [title]="hobby.title"
             [description]="hobby.description"
             [techId]="hobby.techId"

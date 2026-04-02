@@ -449,3 +449,23 @@ body {
   border-right: 1px solid color-mix(in srgb, var(--card-accent, var(--primary)) 20%, transparent);
   pointer-events: none;
 }
+
+/* Card-level tag interaction — all tags glow when card is hovered */
+.hobby-card:hover .hobby-tag {
+  border-color: color-mix(in srgb, var(--card-accent, var(--primary)) 40%, transparent);
+  background: color-mix(in srgb, var(--card-accent, var(--primary)) 15%, transparent);
+}
+
+/* ===== Reduced motion: disable entrance animations ===== */
+@media (prefers-reduced-motion: reduce) {
+  .bento-card,
+  .letter-reveal,
+  .fade-in {
+    opacity: 1 !important;
+    animation: none !important;
+    transform: none !important;
+  }
+  .hobby-card {
+    transition: none;
+  }
+}

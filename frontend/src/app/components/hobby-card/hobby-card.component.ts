@@ -19,7 +19,7 @@ import { UpperCasePipe } from '@angular/common';
       (mouseleave)="onMouseLeave()">
 
       <!-- LAYER 1: Low Poly SVG background -->
-      <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-40">
+      <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-20 md:opacity-40">
         <svg [innerHTML]="svgIcon()" class="w-full h-full"></svg>
       </div>
 
@@ -35,7 +35,7 @@ import { UpperCasePipe } from '@angular/common';
       </span>
 
       <!-- LAYER 4: Floating Tech Specs data (right side, scrolling) -->
-      <div class="absolute top-12 right-4 z-10 overflow-hidden h-32 w-20 pointer-events-none">
+      <div class="absolute top-12 right-4 z-10 overflow-hidden h-32 w-20 pointer-events-none hidden md:block">
         <div class="font-mono text-[8px] leading-[14px] opacity-[0.12] whitespace-nowrap"
              [style.color]="accentColor()"
              style="animation: data-scroll 20s linear infinite">
