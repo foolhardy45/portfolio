@@ -81,6 +81,13 @@ import { UpperCasePipe } from '@angular/common';
         </div>
       </div>
 
+      <!-- Diagonal stripe — Shibuya graffiti slash -->
+      <div class="shibuya-stripe"
+           [style.background]="'linear-gradient(90deg, transparent, ' + accentColor() + ' 20%, ' + accentColor() + ' 80%, transparent)'"></div>
+
+      <!-- Grain noise overlay -->
+      <div class="shibuya-grain"></div>
+
       <!-- Coordinate overlay (bottom-right) -->
       <span class="absolute bottom-3 right-4 font-mono text-[9px] z-10 opacity-20"
             [style.color]="accentColor()">

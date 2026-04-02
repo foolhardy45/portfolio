@@ -334,12 +334,41 @@ body {
   transition: box-shadow 0.4s ease, transform 0.4s ease, border-color 0.4s ease;
 }
 .hobby-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-6px) scale(1.01);
   border-color: var(--card-accent, var(--primary));
   box-shadow: 0 0 16px var(--card-accent-glow, var(--glow)),
               0 0 48px var(--card-accent-glow, var(--glow)),
               0 0 80px var(--card-accent-glow, var(--glow));
 }
+
+/* Grain noise overlay */
+.shibuya-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 8;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  transition: opacity 0.4s var(--transition-smooth);
+}
+.hobby-card:hover .shibuya-grain { opacity: 0.06; }
+
+/* Diagonal stripe — Shibuya graffiti slash */
+.shibuya-stripe {
+  position: absolute;
+  width: 150%;
+  height: 3px;
+  top: 35%;
+  left: -25%;
+  transform: rotate(-5deg);
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0.12;
+  transition: opacity 0.4s var(--transition-smooth);
+}
+.hobby-card:hover .shibuya-stripe { opacity: 0.20; }
 
 /* Neon pulse animation — runs only when motion is allowed */
 @keyframes neon-pulse {
@@ -528,6 +557,10 @@ body {
   z-index: 3;
   pointer-events: none;
   opacity: 0.08;
+  transition: animation-duration 0.4s ease;
+}
+.hobby-card:hover .hud-scanline {
+  animation-duration: 3s !important;
 }
 
 /* HUD data column */

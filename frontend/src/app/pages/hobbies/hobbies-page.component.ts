@@ -40,6 +40,10 @@ interface HobbyData {
         <div class="h-1 w-20 rounded-full mt-4"
              style="background-color: var(--primary)"></div>
 
+        <!-- Shibuya gradient stripe -->
+        <div class="h-1 w-48 md:w-72 rounded-sm mt-3 fade-in"
+             style="background: linear-gradient(90deg, #06b6d4 0%, #ec4899 50%, #f59e0b 100%); opacity: 0.6; transform: rotate(-2deg); animation-delay: 0.3s"></div>
+
         <p class="text-lg mt-4 max-w-xl fade-in"
            style="color: var(--muted-foreground)">
           Ce qui m'anime en dehors du code.
