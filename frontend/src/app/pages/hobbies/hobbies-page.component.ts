@@ -30,8 +30,9 @@ interface HobbyData {
           PAGE_04 // HOBBIES
         </span>
 
-        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mt-3 letter-reveal"
-            style="color: var(--foreground)">
+        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tighter mt-3 letter-reveal shibuya-glitch-text"
+            style="color: var(--foreground)"
+            data-text="Mes Passions">
           Mes Passions
         </h1>
 

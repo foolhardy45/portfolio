@@ -66,8 +66,9 @@ import { UpperCasePipe } from '@angular/common';
       <!-- LAYER 5: Main content (bottom of card) -->
       <div class="relative z-10 flex flex-col justify-end h-full p-6 pt-20">
         <!-- Title -->
-        <h3 class="font-display text-3xl font-bold tracking-tight"
-            style="color: var(--foreground)">
+        <h3 class="font-display text-3xl md:text-4xl font-extrabold tracking-tighter shibuya-glitch-text"
+            style="color: var(--foreground)"
+            [attr.data-text]="title()">
           {{ title() }}
         </h3>
 
