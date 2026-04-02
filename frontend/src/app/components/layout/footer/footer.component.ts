@@ -8,9 +8,14 @@ import { lucideGithub, lucideLinkedin, lucideMail } from '@ng-icons/lucide';
   template: `
     <footer class="border-border/40 relative border-t" style="box-shadow: 0 -1px 8px var(--glow)">
       <div class="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 py-8 sm:flex-row sm:justify-between lg:px-8">
-        <p class="text-muted-foreground text-sm">
-          &copy; {{ currentYear }} Tayrell Ajinca
-        </p>
+        <div>
+          <p class="text-muted-foreground text-sm">
+            &copy; {{ currentYear }} Tayrell Ajinca
+          </p>
+          <span class="font-mono text-[9px] opacity-20" style="color: var(--muted-foreground)">
+            SYS.PORTFOLIO // STATUS: ACTIVE // v1.0
+          </span>
+        </div>
         <div class="flex items-center gap-5">
           @for (link of socialLinks; track link.label) {
             <a

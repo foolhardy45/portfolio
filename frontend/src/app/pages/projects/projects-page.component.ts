@@ -9,6 +9,10 @@ import type { Project } from '../../models/project.model';
   template: `
     <section class="min-h-screen px-4 sm:px-6 lg:px-8 py-20 max-w-7xl mx-auto">
 
+      <span class="tech-specs-label mb-3 block" style="color: var(--muted-foreground)">
+        PAGE_02 // PROJECTS
+      </span>
+
       <h1 class="text-4xl sm:text-5xl font-bold tracking-tight mb-2"
           style="font-family: 'Syne', sans-serif; color: var(--foreground);">
         Projets

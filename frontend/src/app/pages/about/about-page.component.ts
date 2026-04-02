@@ -9,6 +9,10 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
     <section class="min-h-screen px-4 sm:px-6 lg:px-8 py-20 max-w-4xl mx-auto">
 
       <!-- TITRE -->
+      <span class="tech-specs-label mb-3 block" style="color: var(--muted-foreground)">
+        PAGE_03 // ABOUT
+      </span>
+
       <h1 class="text-4xl sm:text-5xl font-bold tracking-tight mb-4"
           style="font-family: 'Syne', sans-serif; color: var(--foreground);">
         À propos
@@ -32,7 +36,7 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
             <div [class]="i % 2 === 0
               ? 'md:flex md:justify-end md:pr-[calc(50%+2rem)]'
               : 'md:flex md:justify-start md:pl-[calc(50%+2rem)]'">
-              <div appGlowCard class="card-glow rounded-2xl p-6 max-w-md w-full"
+              <div appGlowCard class="card-glow subtle-grain rounded-2xl p-6 max-w-md w-full"
                    style="background-color: var(--card); border: 1px solid var(--border);">
                 <span class="text-xs font-mono" style="color: var(--primary);">{{ item.period }}</span>
                 <h3 class="text-base font-semibold mt-2" style="color: var(--foreground);">{{ item.title }}</h3>
@@ -54,7 +58,7 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
 
       <div appScrollReveal [delay]="100" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         @for (cat of skills; track cat.label) {
-          <div appGlowCard class="card-glow rounded-2xl p-6"
+          <div appGlowCard class="card-glow subtle-grain rounded-2xl p-6"
                style="background-color: var(--card); border: 1px solid var(--border);">
             <p class="text-sm font-medium mb-3" style="color: var(--primary);">{{ cat.label }}</p>
             <div class="flex flex-wrap gap-2">
@@ -71,7 +75,7 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
 
 
       <!-- SECTION CV -->
-      <div appGlowCard class="card-glow mt-16 rounded-2xl p-6 flex items-center justify-between"
+      <div appGlowCard class="card-glow subtle-grain mt-16 rounded-2xl p-6 flex items-center justify-between"
            style="background-color: var(--card); border: 1px solid var(--border);">
         <div>
           <p class="font-medium" style="color: var(--foreground);">Mon CV</p>

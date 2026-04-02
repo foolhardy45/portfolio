@@ -7,14 +7,21 @@ import { TextRevealComponent } from '../../components/text-reveal/text-reveal.co
   selector: 'app-home-page',
   imports: [RouterLink, GlowCardDirective, TextRevealComponent],
   template: `
-    <section class="min-h-screen px-4 sm:px-6 lg:px-8 py-8 max-w-7xl mx-auto">
+    <section class="relative min-h-screen px-4 sm:px-6 lg:px-8 py-8 max-w-7xl mx-auto">
+
+      <!-- Ultra-subtle scanline (easter egg) -->
+      <div class="home-scanline"></div>
+
+      <span class="tech-specs-label mb-4 block" style="color: var(--muted-foreground)">
+        PAGE_01 // HOME
+      </span>
 
       <!-- BENTO GRID -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-auto md:auto-rows-[180px]">
 
         <!-- HERO — 2 cols × 2 rows -->
         <div
-          appGlowCard class="card-glow md:col-span-2 md:row-span-2 rounded-2xl p-6 sm:p-8 flex flex-col justify-between"
+          appGlowCard class="card-glow subtle-grain md:col-span-2 md:row-span-2 rounded-2xl p-6 sm:p-8 flex flex-col justify-between"
           style="background-color: var(--card); border: 1px solid var(--border);"
         >
           <div>
@@ -49,7 +56,7 @@ import { TextRevealComponent } from '../../components/text-reveal/text-reveal.co
 
         <!-- STACK — 2 cols × 1 row -->
         <div
-          appGlowCard class="card-glow md:col-span-2 rounded-2xl p-6 flex flex-col justify-between"
+          appGlowCard class="card-glow subtle-grain md:col-span-2 rounded-2xl p-6 flex flex-col justify-between"
           style="background-color: var(--card); border: 1px solid var(--border);"
         >
           <p class="text-sm font-medium mb-3" style="color: var(--muted-foreground);">Technologies</p>
@@ -67,7 +74,7 @@ import { TextRevealComponent } from '../../components/text-reveal/text-reveal.co
 
         <!-- PROJETS — 1 col × 2 rows -->
         <div
-          appGlowCard class="card-glow md:row-span-2 rounded-2xl p-6 flex flex-col"
+          appGlowCard class="card-glow subtle-grain md:row-span-2 rounded-2xl p-6 flex flex-col"
           style="background-color: var(--card); border: 1px solid var(--border);"
         >
           <p class="text-sm font-medium mb-4" style="color: var(--primary);">Projets</p>
@@ -105,7 +112,7 @@ import { TextRevealComponent } from '../../components/text-reveal/text-reveal.co
 
         <!-- À PROPOS — 1 col × 1 row -->
         <div
-          appGlowCard class="card-glow rounded-2xl p-6 flex flex-col justify-between"
+          appGlowCard class="card-glow subtle-grain rounded-2xl p-6 flex flex-col justify-between"
           style="background-color: var(--card);"
         >
           <div>
@@ -125,7 +132,7 @@ import { TextRevealComponent } from '../../components/text-reveal/text-reveal.co
 
         <!-- ACTUELLEMENT — 1 col × 1 row -->
         <div
-          appGlowCard class="card-glow rounded-2xl p-6"
+          appGlowCard class="card-glow subtle-grain rounded-2xl p-6"
           style="background-color: var(--card);"
         >
           <p class="text-sm font-medium mb-3" style="color: var(--muted-foreground);">Actuellement</p>
@@ -143,7 +150,7 @@ import { TextRevealComponent } from '../../components/text-reveal/text-reveal.co
 
         <!-- CONTACT — 1 col × 1 row -->
         <div
-          appGlowCard class="card-glow rounded-2xl p-6 flex flex-col justify-between"
+          appGlowCard class="card-glow subtle-grain rounded-2xl p-6 flex flex-col justify-between"
           style="background-color: var(--card);"
         >
           <div>
@@ -161,7 +168,7 @@ import { TextRevealComponent } from '../../components/text-reveal/text-reveal.co
 
         <!-- GITHUB — 1 col × 1 row -->
         <div
-          appGlowCard class="card-glow rounded-2xl p-6 flex flex-col justify-between"
+          appGlowCard class="card-glow subtle-grain rounded-2xl p-6 flex flex-col justify-between"
           style="background-color: var(--card);"
         >
           <p class="text-sm font-medium" style="color: var(--muted-foreground);">Explorer mon code</p>

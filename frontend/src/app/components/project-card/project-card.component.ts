@@ -6,8 +6,12 @@ import { GlowCardDirective } from '../../directives/glow-card.directive';
   selector: 'app-project-card',
   imports: [GlowCardDirective],
   template: `
-    <div appGlowCard class="card-glow group flex h-full flex-col overflow-hidden rounded-2xl"
+    <div appGlowCard class="card-glow subtle-grain group relative flex h-full flex-col overflow-hidden rounded-2xl"
          style="background-color: var(--card); border: 1px solid var(--border);">
+
+      <!-- Subtle HUD brackets -->
+      <div class="subtle-bracket-tl"></div>
+      <div class="subtle-bracket-br"></div>
 
       <!-- Image -->
       <div class="h-40 overflow-hidden" style="background-color: var(--secondary);">

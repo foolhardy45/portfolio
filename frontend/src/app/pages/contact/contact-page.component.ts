@@ -9,6 +9,10 @@ import { GlowCardDirective } from '../../directives/glow-card.directive';
   template: `
     <section class="min-h-screen px-4 sm:px-6 lg:px-8 py-20 max-w-5xl mx-auto">
 
+      <span class="tech-specs-label mb-3 block" style="color: var(--muted-foreground)">
+        PAGE_05 // CONTACT
+      </span>
+
       <h1 class="text-4xl sm:text-5xl font-bold tracking-tight mb-4"
           style="font-family: 'Syne', sans-serif; color: var(--foreground);">
         Contact
@@ -21,13 +25,13 @@ import { GlowCardDirective } from '../../directives/glow-card.directive';
 
         <!-- INFO COLUMN (2/5) -->
         <div class="md:col-span-2 space-y-4">
-          <div appGlowCard class="card-glow rounded-2xl p-6"
+          <div appGlowCard class="card-glow subtle-grain rounded-2xl p-6"
                style="background-color: var(--card); border: 1px solid var(--border);">
             <p class="text-sm" style="color: var(--muted-foreground);">Email</p>
             <p class="text-sm mt-1" style="color: var(--foreground);">tayrellajincapro@gmail.com</p>
           </div>
 
-          <div appGlowCard class="card-glow rounded-2xl p-6"
+          <div appGlowCard class="card-glow subtle-grain rounded-2xl p-6"
                style="background-color: var(--card); border: 1px solid var(--border);">
             <p class="text-sm" style="color: var(--muted-foreground);">Réseaux</p>
             <div class="flex gap-4 mt-2">
@@ -40,7 +44,7 @@ import { GlowCardDirective } from '../../directives/glow-card.directive';
             </div>
           </div>
 
-          <div appGlowCard class="card-glow rounded-2xl p-6"
+          <div appGlowCard class="card-glow subtle-grain rounded-2xl p-6"
                style="background-color: var(--card); border: 1px solid var(--border);">
             <p class="text-sm" style="color: var(--muted-foreground);">Disponibilité</p>
             <div class="flex items-center gap-2 mt-2">
@@ -53,7 +57,7 @@ import { GlowCardDirective } from '../../directives/glow-card.directive';
         <!-- FORM COLUMN (3/5) -->
         <div class="md:col-span-3">
           <form [formGroup]="contactForm" (ngSubmit)="onSubmit()"
-                appGlowCard class="card-glow rounded-2xl p-8"
+                appGlowCard class="card-glow subtle-grain rounded-2xl p-8"
                 style="background-color: var(--card); border: 1px solid var(--border);">
 
             <div class="space-y-5">
