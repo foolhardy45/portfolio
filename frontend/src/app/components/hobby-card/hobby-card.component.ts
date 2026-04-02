@@ -11,11 +11,10 @@ import { UpperCasePipe } from '@angular/common';
   imports: [UpperCasePipe],
   template: `
     <article
-      class="hobby-card hobby-card-spotlight bento-card"
-      role="article"
+      class="hobby-card hobby-card-spotlight"
       [style.--card-accent]="accentColor()"
       [style.--card-accent-glow]="accentGlow()"
-      [style.animation-delay]="animDelay()"
+      [style.--stagger]="animDelay()"
       (mousemove)="onMouseMove($event)"
       (mouseleave)="onMouseLeave()">
 

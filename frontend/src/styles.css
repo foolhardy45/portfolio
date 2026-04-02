@@ -321,13 +321,14 @@ body {
   --hobby-lime-glow: rgba(132, 204, 22, 0.18);
 }
 
-/* Hobby card — neon border + pulse glow */
+/* Hobby card — neon border + pulse glow + entrance */
 .hobby-card {
   border: 1.5px solid var(--card-accent, var(--primary));
   background: var(--card);
   border-radius: var(--radius-xl);
   overflow: hidden;
   position: relative;
+  opacity: 0;
   box-shadow: 0 0 8px var(--card-accent-glow, var(--glow)),
               0 0 20px var(--card-accent-glow, var(--glow)),
               inset 0 0 12px var(--card-accent-glow, var(--glow));
@@ -387,7 +388,12 @@ body {
 }
 @media (prefers-reduced-motion: no-preference) {
   .hobby-card {
-    animation: neon-pulse 3s ease-in-out infinite;
+    animation-name: bento-enter, neon-pulse;
+    animation-duration: 0.5s, 3s;
+    animation-timing-function: var(--transition-smooth), ease-in-out;
+    animation-fill-mode: forwards, none;
+    animation-iteration-count: 1, infinite;
+    animation-delay: var(--stagger, 0s), 0s;
   }
 }
 
@@ -635,6 +641,7 @@ body {
     transform: none !important;
   }
   .hobby-card {
+    opacity: 1 !important;
     transition: none;
     animation: none !important;
   }
