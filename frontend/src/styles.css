@@ -395,8 +395,8 @@ body {
 
 /* Hobby animations */
 @keyframes scanline-sweep {
-  0% { top: 0%; }
-  100% { top: 100%; }
+  0%, 100% { top: -2px; }
+  50% { top: calc(100% + 2px); }
 }
 
 @keyframes glitch-flicker {
@@ -456,31 +456,99 @@ body {
   background-repeat: repeat;
 }
 
-/* Corner bracket decoration */
-.corner-bracket {
-  position: relative;
-}
-.corner-bracket::before {
-  content: "";
+/* HUD corner brackets — 4 corners with accent dot */
+.hud-bracket {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  width: 16px;
-  height: 16px;
-  border-top: 1px solid color-mix(in srgb, var(--card-accent, var(--primary)) 20%, transparent);
-  border-left: 1px solid color-mix(in srgb, var(--card-accent, var(--primary)) 20%, transparent);
+  width: 24px;
+  height: 24px;
   pointer-events: none;
+  z-index: 5;
 }
-.corner-bracket::after {
-  content: "";
+.hud-bracket::after {
+  content: '';
   position: absolute;
-  bottom: 12px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--card-accent, var(--primary));
+  opacity: 0.5;
+}
+.hud-bracket--tl {
+  top: 10px;
+  left: 10px;
+  border-top: 1.5px solid color-mix(in srgb, var(--card-accent, var(--primary)) 35%, transparent);
+  border-left: 1.5px solid color-mix(in srgb, var(--card-accent, var(--primary)) 35%, transparent);
+}
+.hud-bracket--tl::after { top: -2px; left: -2px; }
+.hud-bracket--tr {
+  top: 10px;
+  right: 10px;
+  border-top: 1.5px solid color-mix(in srgb, var(--card-accent, var(--primary)) 35%, transparent);
+  border-right: 1.5px solid color-mix(in srgb, var(--card-accent, var(--primary)) 35%, transparent);
+}
+.hud-bracket--tr::after { top: -2px; right: -2px; }
+.hud-bracket--bl {
+  bottom: 10px;
+  left: 10px;
+  border-bottom: 1.5px solid color-mix(in srgb, var(--card-accent, var(--primary)) 35%, transparent);
+  border-left: 1.5px solid color-mix(in srgb, var(--card-accent, var(--primary)) 35%, transparent);
+}
+.hud-bracket--bl::after { bottom: -2px; left: -2px; }
+.hud-bracket--br {
+  bottom: 10px;
+  right: 10px;
+  border-bottom: 1.5px solid color-mix(in srgb, var(--card-accent, var(--primary)) 35%, transparent);
+  border-right: 1.5px solid color-mix(in srgb, var(--card-accent, var(--primary)) 35%, transparent);
+}
+.hud-bracket--br::after { bottom: -2px; right: -2px; }
+
+/* Responsive: smaller brackets on mobile */
+@media (max-width: 767px) {
+  .hud-bracket { width: 16px; height: 16px; }
+}
+
+/* HUD grid background */
+.hud-grid-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.03;
+  background-image:
+    repeating-linear-gradient(0deg, var(--card-accent, var(--primary)) 0px, transparent 1px, transparent 50px),
+    repeating-linear-gradient(90deg, var(--card-accent, var(--primary)) 0px, transparent 1px, transparent 50px);
+}
+
+/* Scanline bar */
+.hud-scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.08;
+}
+
+/* HUD data column */
+.hud-data-col {
+  position: absolute;
+  top: 50px;
   right: 12px;
-  width: 16px;
-  height: 16px;
-  border-bottom: 1px solid color-mix(in srgb, var(--card-accent, var(--primary)) 20%, transparent);
-  border-right: 1px solid color-mix(in srgb, var(--card-accent, var(--primary)) 20%, transparent);
+  width: 80px;
+  height: 140px;
+  overflow: hidden;
   pointer-events: none;
+  z-index: 4;
+}
+.hud-data-scroll {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  line-height: 16px;
+  white-space: nowrap;
+  color: var(--card-accent, var(--primary));
+  opacity: 0.18;
+  animation: data-scroll 18s linear infinite;
 }
 
 /* Card-level tag interaction — all tags glow when card is hovered */

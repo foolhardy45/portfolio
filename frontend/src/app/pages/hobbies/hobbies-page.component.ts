@@ -14,6 +14,7 @@ interface HobbyData {
   gridClass: string;
   animDelay: string;
   svg: string;
+  hudLines: string[];
 }
 
 @Component({
@@ -58,6 +59,7 @@ interface HobbyData {
             [accentColor]="hobby.accentColor"
             [accentGlow]="hobby.accentGlow"
             [svgIcon]="hobby.svg"
+            [hudLines]="hobby.hudLines"
             [animDelay]="hobby.animDelay" />
         }
       </div>
@@ -88,6 +90,7 @@ export class HobbiesPageComponent {
       gridClass: 'lg:col-span-7',
       animDelay: '0s',
       svg: this.svgService.generateHobbySvg('gaming', 'var(--hobby-cyan)'),
+      hudLines: ['FPS 240', 'RANK S+', 'KDA 3.2', 'PING 12ms', 'SENS 0.45', 'GPU 98%', 'VRAM 6G', 'TICK 128', 'WIN 67%', 'SKILL A+'],
     },
     {
       type: 'manga',
@@ -101,6 +104,7 @@ export class HobbiesPageComponent {
       gridClass: 'lg:col-span-5',
       animDelay: '0.1s',
       svg: this.svgService.generateHobbySvg('manga', 'var(--hobby-magenta)'),
+      hudLines: ['VOL 104', 'CH 1089', 'READ 847h', 'RATE 9.8', 'ARC 11', 'SHELF 3m', 'SCAN HQ', 'FAVE \u221E', 'TIER S', 'NEW \u25B2'],
     },
     {
       type: 'volley',
@@ -114,6 +118,7 @@ export class HobbiesPageComponent {
       gridClass: 'lg:col-span-5',
       animDelay: '0.2s',
       svg: this.svgService.generateHobbySvg('volley', 'var(--hobby-lime)'),
+      hudLines: ['SPIKE 87%', 'SET 94%', 'BLOCK 12', 'ACE 8', 'DIG 23', 'JUMP 89cm', 'POWER 7.2', 'REACT 0.3s', 'WIN \u25B2', 'TEAM 6'],
     },
     {
       type: 'musique',
@@ -127,6 +132,7 @@ export class HobbiesPageComponent {
       gridClass: 'lg:col-span-7',
       animDelay: '0.3s',
       svg: this.svgService.generateHobbySvg('musique', 'var(--primary)'),
+      hudLines: ['BPM 140', 'VOL -6dB', 'FREQ 44k', 'BIT 24', 'TRKS 2847', 'BASS \u2593\u2593\u2593', 'MID \u2593\u2593\u2591', 'EQ FLAT', 'LOOP ON', 'VIBE \u221E'],
     },
   ];
 }
