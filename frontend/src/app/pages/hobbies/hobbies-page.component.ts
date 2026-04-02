@@ -1,115 +1,129 @@
-import { Component } from '@angular/core';
-import { GlowCardDirective } from '../../directives/glow-card.directive';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { HobbyCardComponent } from '../../components/hobby-card/hobby-card.component';
+import { LowPolySvgService, type HobbyType } from '../../services/low-poly-svg.service';
+
+interface HobbyData {
+  type: HobbyType;
+  title: string;
+  description: string;
+  techId: string;
+  label: string;
+  tags: string[];
+  accentColor: string;
+  accentGlow: string;
+  gridClass: string;
+  animDelay: string;
+  svg: string;
+}
 
 @Component({
   selector: 'app-hobbies-page',
-  imports: [GlowCardDirective],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [HobbyCardComponent],
   template: `
-    <section class="min-h-screen px-4 sm:px-6 lg:px-8 py-20 max-w-7xl mx-auto">
+    <section class="min-h-screen px-4 sm:px-6 lg:px-8 py-20 max-w-7xl mx-auto"
+             aria-label="Mes passions et hobbies">
 
-      <h1 class="text-4xl sm:text-5xl font-bold tracking-tight mb-4"
-          style="font-family: 'Syne', sans-serif; color: var(--foreground);">
-        Hobbies
-      </h1>
-      <p class="text-lg mb-12" style="color: var(--muted-foreground);">Quand je ne code pas.</p>
+      <!-- HEADER -->
+      <header class="mb-12">
+        <span class="tech-specs-label">PAGE_04 // HOBBIES</span>
+
+        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mt-3 letter-reveal"
+            style="color: var(--foreground)">
+          Mes Passions
+        </h1>
+
+        <div class="h-1 w-20 rounded-full mt-4"
+             style="background-color: var(--primary)"></div>
+
+        <p class="text-lg mt-4 max-w-xl fade-in"
+           style="color: var(--muted-foreground)">
+          Ce qui m'anime en dehors du code.
+        </p>
+      </header>
 
       <!-- BENTO GRID -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[220px]">
-
-        <!-- VOLLEY — span 2 cols -->
-        <div class="md:col-span-2 rounded-2xl p-8 flex flex-col justify-between card-glow"
-             appGlowCard style="background-color: var(--card); border: 1px solid var(--border);">
-          <div>
-            <div class="flex items-center gap-3 mb-4">
-              <span class="text-2xl">🏐</span>
-              <h2 class="text-xl font-bold" style="font-family: 'Syne', sans-serif; color: var(--foreground);">
-                Volley-ball
-              </h2>
-            </div>
-            <p class="text-sm leading-relaxed max-w-lg" style="color: var(--muted-foreground);">
-              Sport d'équipe que je pratique depuis plusieurs mois. Le volley m'apporte la rigueur collective,
-              le dépassement de soi et un vrai esprit de compétition.
-            </p>
-          </div>
-        </div>
-
-        <!-- GAMING — 1 col -->
-        <div class="rounded-2xl p-8 flex flex-col justify-between card-glow"
-             appGlowCard style="background-color: var(--card); border: 1px solid var(--border);">
-          <div>
-            <div class="flex items-center gap-3 mb-4">
-              <span class="text-2xl">🎮</span>
-              <h2 class="text-xl font-bold" style="font-family: 'Syne', sans-serif; color: var(--foreground);">
-                Gaming
-              </h2>
-            </div>
-            <p class="text-sm leading-relaxed" style="color: var(--muted-foreground);">
-              Passionné de jeux vidéo, entre compétition en ligne et aventures solo.
-            </p>
-          </div>
-          <div class="flex flex-wrap gap-2 mt-4">
-            @for (game of games; track game) {
-              <span class="px-2 py-0.5 rounded text-xs"
-                    style="background-color: var(--secondary); color: var(--muted-foreground); font-family: 'JetBrains Mono', monospace;">
-                {{ game }}
-              </span>
-            }
-          </div>
-        </div>
-
-        <!-- MANGA — 1 col -->
-        <div class="rounded-2xl p-8 flex flex-col justify-between card-glow"
-             appGlowCard style="background-color: var(--card); border: 1px solid var(--border);">
-          <div>
-            <div class="flex items-center gap-3 mb-4">
-              <span class="text-2xl">📚</span>
-              <h2 class="text-xl font-bold" style="font-family: 'Syne', sans-serif; color: var(--foreground);">
-                Manga
-              </h2>
-            </div>
-            <p class="text-sm leading-relaxed" style="color: var(--muted-foreground);">
-              Grand lecteur de manga, du shonen classique aux seinen plus matures.
-            </p>
-          </div>
-          <div class="flex flex-wrap gap-2 mt-4">
-            @for (manga of mangas; track manga) {
-              <span class="px-2 py-0.5 rounded text-xs"
-                    style="background-color: var(--secondary); color: var(--muted-foreground); font-family: 'JetBrains Mono', monospace;">
-                {{ manga }}
-              </span>
-            }
-          </div>
-        </div>
-
-        <!-- MUSIQUE — span 2 cols -->
-        <div class="md:col-span-2 rounded-2xl p-8 flex flex-col justify-between card-glow"
-             appGlowCard style="background-color: var(--card); border: 1px solid var(--border);">
-          <div>
-            <div class="flex items-center gap-3 mb-4">
-              <span class="text-2xl">🎵</span>
-              <h2 class="text-xl font-bold" style="font-family: 'Syne', sans-serif; color: var(--foreground);">
-                Musique
-              </h2>
-            </div>
-            <p class="text-sm leading-relaxed max-w-lg" style="color: var(--muted-foreground);">
-              La musique fait partie de mon quotidien — écoute, découverte et production.
-            </p>
-          </div>
-          <div class="flex flex-wrap gap-2 mt-4">
-            @for (genre of genres; track genre) {
-              <span class="px-2 py-0.5 rounded text-xs"
-                    style="background-color: var(--secondary); color: var(--muted-foreground); font-family: 'JetBrains Mono', monospace;">
-                {{ genre }}
-              </span>
-            }
-          </div>
-        </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-5">
+        @for (hobby of hobbies; track hobby.techId) {
+          <app-hobby-card
+            [class]="'grid min-h-[320px] lg:min-h-[400px] ' + hobby.gridClass"
+            [title]="hobby.title"
+            [description]="hobby.description"
+            [techId]="hobby.techId"
+            [label]="hobby.label"
+            [tags]="hobby.tags"
+            [accentColor]="hobby.accentColor"
+            [accentGlow]="hobby.accentGlow"
+            [svgIcon]="hobby.svg"
+            [animDelay]="hobby.animDelay" />
+        }
       </div>
+
+      <!-- BOTTOM -->
+      <footer class="mt-16 text-center">
+        <span class="tech-specs-label" style="opacity: 0.3">
+          END_OF_PAGE // 4 HOBBIES LOADED
+        </span>
+      </footer>
+
     </section>
   `,
 })
 export class HobbiesPageComponent {
-  protected readonly games = ['Valorant', 'League of Legends', 'Dead Cells', 'Guilty Gear Strive'];
-  protected readonly mangas = ['One Piece', 'Jujutsu Kaisen', 'Vinland Saga'];
-  protected readonly genres = ['Rock', 'Electro', 'Jungle', 'Drill'];
+  private readonly svgService = inject(LowPolySvgService);
+
+  protected readonly hobbies: readonly HobbyData[] = [
+    {
+      type: 'gaming',
+      title: 'GAMING',
+      description: 'FPS compétitif, RPG japonais, roguelikes. Du skill et des histoires qui marquent.',
+      techId: 'HOBBY_01',
+      label: 'Gaming',
+      tags: ['Valorant', 'Elden Ring', 'Hades', 'Zelda'],
+      accentColor: 'var(--hobby-cyan)',
+      accentGlow: 'var(--hobby-cyan-glow)',
+      gridClass: 'lg:col-span-7',
+      animDelay: '0s',
+      svg: this.svgService.generateHobbySvg('gaming', 'var(--hobby-cyan)'),
+    },
+    {
+      type: 'manga',
+      title: 'MANGA',
+      description: "Shonen, seinen, slice of life. Des récits qui repoussent les limites de l'imagination.",
+      techId: 'HOBBY_02',
+      label: 'Manga & Anime',
+      tags: ['One Piece', 'JJK', 'Chainsaw Man'],
+      accentColor: 'var(--hobby-magenta)',
+      accentGlow: 'var(--hobby-magenta-glow)',
+      gridClass: 'lg:col-span-5',
+      animDelay: '0.1s',
+      svg: this.svgService.generateHobbySvg('manga', 'var(--hobby-magenta)'),
+    },
+    {
+      type: 'volley',
+      title: 'VOLLEY',
+      description: "Esprit d'équipe, compétition, dépassement. Sur le terrain comme dans le code.",
+      techId: 'HOBBY_03',
+      label: 'Volleyball',
+      tags: ['Compétition', 'Équipe', 'Terrain'],
+      accentColor: 'var(--hobby-lime)',
+      accentGlow: 'var(--hobby-lime-glow)',
+      gridClass: 'lg:col-span-5',
+      animDelay: '0.2s',
+      svg: this.svgService.generateHobbySvg('volley', 'var(--hobby-lime)'),
+    },
+    {
+      type: 'musique',
+      title: 'MUSIQUE',
+      description: 'Rap FR, hip-hop US, lo-fi, afrobeats. Le son qui accompagne chaque session de code.',
+      techId: 'HOBBY_04',
+      label: 'Musique',
+      tags: ['Rap FR', 'Hip-Hop', 'Lo-Fi', 'Afrobeats'],
+      accentColor: 'var(--primary)',
+      accentGlow: 'var(--glow)',
+      gridClass: 'lg:col-span-7',
+      animDelay: '0.3s',
+      svg: this.svgService.generateHobbySvg('musique', 'var(--primary)'),
+    },
+  ];
 }
