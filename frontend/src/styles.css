@@ -362,6 +362,16 @@ body {
   }
 }
 
+/* Hobby SVG illustration layer */
+.hobby-svg-layer {
+  opacity: 0.35;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.hobby-card:hover .hobby-svg-layer {
+  opacity: 0.50;
+  transform: scale(1.05) rotate(2deg);
+}
+
 /* Hobby card spotlight — accent-aware radial gradient */
 .hobby-card-spotlight {
   position: relative;

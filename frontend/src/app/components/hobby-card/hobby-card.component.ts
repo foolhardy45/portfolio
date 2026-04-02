@@ -18,8 +18,10 @@ import { UpperCasePipe } from '@angular/common';
       (mousemove)="onMouseMove($event)"
       (mouseleave)="onMouseLeave()">
 
-      <!-- LAYER 1: Low Poly SVG background -->
-      <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-20 md:opacity-40">
+      <!-- LAYER 1: Low Poly SVG illustration -->
+      <div class="hobby-svg-layer absolute pointer-events-none"
+           style="right: -5%; top: 5%; width: 65%; height: 75%"
+           [style.filter]="'drop-shadow(0 0 16px ' + accentGlow() + ')'">
         <svg [innerHTML]="svgIcon()" class="w-full h-full"></svg>
       </div>
 
