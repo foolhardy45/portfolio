@@ -5,7 +5,7 @@ import {
   withInMemoryScrolling,
   withViewTransitions,
 } from '@angular/router';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { provideNgIconsConfig } from '@ng-icons/core';
 
 import { routes } from './app.routes';
