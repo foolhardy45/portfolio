@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal, OnInit, HostListener } from '@angular/core';
+import { Component, computed, inject, signal, OnInit } from '@angular/core';
 import { ProjectCardComponent } from '../../components/project-card/project-card.component';
 import { ApiService } from '../../services/api.service';
 import type { Project } from '../../models/project.model';
@@ -9,7 +9,7 @@ import type { Project } from '../../models/project.model';
   template: `
     <section class="min-h-screen px-4 sm:px-6 lg:px-8 py-20 max-w-7xl mx-auto">
 
-      <span class="tech-specs-label mb-3 block" style="color: var(--muted-foreground)">
+      <span class="tech-specs-label mb-3 block" style="color: var(--muted-foreground);">
         PAGE_02 // PROJECTS
       </span>
 
@@ -19,7 +19,6 @@ import type { Project } from '../../models/project.model';
       </h1>
       <p class="text-lg mb-8" style="color: var(--muted-foreground);">Ce que j'ai construit.</p>
 
-      <!-- Filters -->
       <div class="flex flex-wrap gap-2 mb-8">
         @for (f of filters(); track f) {
           <button
@@ -34,7 +33,6 @@ import type { Project } from '../../models/project.model';
         }
       </div>
 
-      <!-- Project grid -->
       @if (loading()) {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           @for (i of [1, 2, 3]; track i) {
@@ -54,57 +52,6 @@ import type { Project } from '../../models/project.model';
         </div>
       }
 
-      <!-- Detail modal -->
-      @if (selectedProject()) {
-        <div class="fixed inset-0 z-50 flex items-center justify-center p-4"
-             role="dialog" aria-modal="true"
-             (keydown.escape)="selectedProject.set(null)">
-          <button class="fixed inset-0 cursor-default border-none bg-transparent"
-                  style="background-color: rgba(0,0,0,0.6);"
-                  aria-label="Fermer"
-                  (click)="selectedProject.set(null)"></button>
-          <div class="relative z-10 w-full max-w-lg rounded-2xl p-6 max-h-[80vh] overflow-y-auto"
-               style="background-color: var(--card); border: 1px solid var(--border);">
-            <button class="absolute top-4 right-4 text-lg"
-                    style="color: var(--muted-foreground);"
-                    (click)="selectedProject.set(null)">
-              ✕
-            </button>
-            <h2 class="text-xl font-bold mb-1" style="font-family: 'Syne', sans-serif; color: var(--foreground);">
-              {{ selectedProject()!.title }}
-            </h2>
-            <p class="text-sm mb-4" style="color: var(--primary);">{{ selectedProject()!.shortDescription }}</p>
-            <p class="text-sm leading-relaxed mb-4" style="color: var(--muted-foreground);">
-              {{ selectedProject()!.description }}
-            </p>
-            <div class="flex flex-wrap gap-2 mb-4">
-              @for (tech of selectedProject()!.technologies; track tech) {
-                <span class="rounded-md px-3 py-1 text-xs"
-                      style="background-color: var(--secondary); color: var(--muted-foreground); font-family: 'JetBrains Mono', monospace;">
-                  {{ tech }}
-                </span>
-              }
-            </div>
-            <div class="flex gap-3 pt-3" style="border-top: 1px solid var(--border);">
-              @if (selectedProject()!.githubUrl) {
-                <a [href]="selectedProject()!.githubUrl" target="_blank" rel="noopener noreferrer"
-                   class="px-4 py-2 rounded-lg text-sm font-medium shadow-sm hover:opacity-90 active:scale-95 transition-all"
-                   style="background-color: var(--secondary); color: var(--foreground); border: 1px solid var(--border);">
-                  GitHub ↗
-                </a>
-              }
-              @if (selectedProject()!.demoUrl) {
-                <a [href]="selectedProject()!.demoUrl" target="_blank" rel="noopener noreferrer"
-                   class="px-4 py-2 rounded-lg text-sm font-medium shadow-sm hover:opacity-90 active:scale-95 transition-all"
-                   style="background-color: var(--primary); color: var(--primary-foreground);">
-                  Demo ↗
-                </a>
-              }
-            </div>
-          </div>
-        </div>
-      }
-
     </section>
   `,
 })
@@ -114,7 +61,6 @@ export class ProjectsPageComponent implements OnInit {
   protected readonly projects = signal<Project[]>([]);
   protected readonly activeFilter = signal('Tous');
   protected readonly loading = signal(true);
-  protected readonly selectedProject = signal<Project | null>(null);
 
   protected readonly filters = computed(() => {
     const techs = new Set(this.projects().flatMap((p) => p.technologies));
@@ -126,11 +72,6 @@ export class ProjectsPageComponent implements OnInit {
     if (filter === 'Tous') return this.projects();
     return this.projects().filter((p) => p.technologies.includes(filter));
   });
-
-  @HostListener('document:keydown.escape')
-  onEscape(): void {
-    this.selectedProject.set(null);
-  }
 
   ngOnInit(): void {
     this.api.getProjects().subscribe({

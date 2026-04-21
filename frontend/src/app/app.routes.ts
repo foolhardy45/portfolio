@@ -16,6 +16,14 @@ export const routes: Routes = [
       import('./pages/projects/projects-page.component').then((m) => m.ProjectsPageComponent),
   },
   {
+    path: 'projets/:slug',
+    title: 'Projet — Tayrell',
+    data: { description: 'Détails d\'un projet fullstack réalisé par Tayrell Ajinca.' },
+    loadComponent: () =>
+      import('./pages/project-detail/project-detail-page.component')
+        .then((m) => m.ProjectDetailPageComponent),
+  },
+  {
     path: 'a-propos',
     title: 'À propos — Tayrell',
     data: { description: 'Parcours, formation et compétences techniques de Tayrell Ajinca, développeur fullstack en alternance.' },
