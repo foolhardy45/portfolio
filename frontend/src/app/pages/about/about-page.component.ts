@@ -95,7 +95,7 @@ export class AboutPageComponent {
     {
       period: '2026 — 2029',
       title: 'ESIEA - École d\'ingénieurs en informatique et systèmes d\'information',
-      description: 'Formation d\'ingénieur en informatique avec une spécialisation en développement logiciel et systèmes d\'information. ET cybersécurité.',
+      description: 'Formation d\'ingénieur en informatique avec une spécialisation en développement logiciel et systèmes d\'information et cybersécurité.',
       tag: 'Formation',
     },
     {
