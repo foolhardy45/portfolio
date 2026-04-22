@@ -49,7 +49,7 @@ import { GlowCardDirective } from '../../directives/glow-card.directive';
             <p class="text-sm" style="color: var(--muted-foreground);">Disponibilité</p>
             <div class="flex items-center gap-2 mt-2">
               <div class="h-2 w-2 rounded-full" style="background-color: var(--success);"></div>
-              <span class="text-sm" style="color: var(--foreground);">Recherche une alternance pour 2026-2027</span>
+              <span class="text-sm" style="color: var(--foreground);">Recherche une alternance pour 2026</span>
             </div>
           </div>
         </div>

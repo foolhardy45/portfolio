@@ -69,10 +69,6 @@ import { UpperCasePipe } from '@angular/common';
         <div class="h-[3px] w-10 rounded-full mt-2 mb-3"
              [style.background]="accentColor()"></div>
 
-        <p class="text-sm leading-relaxed" style="color: var(--muted-foreground)">
-          {{ description() }}
-        </p>
-
         <div class="flex flex-wrap gap-2 mt-4">
           @for (tag of tags(); track tag) {
             <span class="hobby-tag">{{ tag }}</span>
@@ -97,7 +93,6 @@ import { UpperCasePipe } from '@angular/common';
 })
 export class HobbyCardComponent {
   readonly title = input.required<string>();
-  readonly description = input.required<string>();
   readonly techId = input.required<string>();
   readonly label = input.required<string>();
   readonly accentColor = input.required<string>();

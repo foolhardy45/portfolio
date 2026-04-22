@@ -5,7 +5,6 @@ import { LowPolySvgService, type HobbyType } from '../../services/low-poly-svg.s
 interface HobbyData {
   type: HobbyType;
   title: string;
-  description: string;
   techId: string;
   label: string;
   tags: string[];
@@ -56,7 +55,6 @@ interface HobbyData {
           <app-hobby-card
             [class]="'grid min-h-[280px] lg:min-h-[400px] ' + hobby.gridClass"
             [title]="hobby.title"
-            [description]="hobby.description"
             [techId]="hobby.techId"
             [label]="hobby.label"
             [tags]="hobby.tags"
@@ -85,35 +83,33 @@ export class HobbiesPageComponent {
     {
       type: 'gaming',
       title: 'GAMING',
-      description: 'FPS compétitif, RPG japonais, roguelikes. Du skill et des histoires qui marquent.',
+      
       techId: 'HOBBY_01',
       label: 'Gaming',
-      tags: ['Valorant', 'Elden Ring', 'Hades', 'Zelda', 'Guilty Gear Strive'],
+      tags: ['HYlircs', 'Hollow knight', 'Hades', 'Katana Zero', 'Guilty Gear Strive(participe en tournois offline)'],
       accentColor: 'var(--hobby-cyan)',
       accentGlow: 'var(--hobby-cyan-glow)',
       gridClass: 'lg:col-span-7',
       animDelay: '0s',
       svg: this.svgService.generateHobbySvg('gaming', 'var(--hobby-cyan)'),
-      hudLines: ['FPS 240', 'RANK S+', 'KDA 3.2', 'PING 12ms', 'SENS 0.45', 'GPU 98%', 'VRAM 6G', 'TICK 128', 'WIN 67%', 'SKILL A+'],
+      hudLines: ['COUNTER', 'RANK S+', 'NEGATIVE POSITION', 'PING 12ms', 'THE NAME OF HADES...', 'GPU 98%', 'VRAM 6G', 'TICK 128', 'WIN 67%', 'SKILL A+'],
     },
     {
       type: 'manga',
       title: 'MANGA',
-      description: "Shonen, seinen, slice of life. Des récits qui repoussent les limites de l'imagination.",
       techId: 'HOBBY_02',
       label: 'Manga & Anime',
-      tags: ['One Piece', 'JJK', 'Chainsaw Man'],
+      tags: ['gachiakuta', 'JJK', 'Chainsaw Man', 'Bleach', 'Mob Psycho 100'],
       accentColor: 'var(--hobby-magenta)',
       accentGlow: 'var(--hobby-magenta-glow)',
       gridClass: 'lg:col-span-5',
       animDelay: '0.1s',
       svg: this.svgService.generateHobbySvg('manga', 'var(--hobby-magenta)'),
-      hudLines: ['VOL 104', 'CH 1089', 'READ 847h', 'RATE 9.8', 'ARC 11', 'SHELF 3m', 'SCAN HQ', 'FAVE \u221E', 'TIER S', 'NEW \u25B2'],
+      hudLines: ['VOL 104', 'BANKAI', 'READ 847h', 'RATE 9.8', 'ARC 11', 'SHELF 3m', 'IT OVER 9000', 'FAVE \u221E', 'TIER S', 'NEW \u25B2'],
     },
     {
       type: 'volley',
       title: 'VOLLEY',
-      description: "Esprit d'équipe, compétition, dépassement. Sur le terrain comme dans le code.",
       techId: 'HOBBY_03',
       label: 'Volleyball',
       tags: ['Compétition', 'Équipe', 'Terrain'],
@@ -127,10 +123,9 @@ export class HobbiesPageComponent {
     {
       type: 'musique',
       title: 'MUSIQUE',
-      description: 'Rap FR, hip-hop US, lo-fi, afrobeats. Le son qui accompagne chaque session de code.',
       techId: 'HOBBY_04',
       label: 'Musique',
-      tags: ['Rap FR', 'Hip-Hop', 'Lo-Fi', 'OST'],
+      tags: ['Jungle', 'Lo-Fi', 'OST', 'Funk' ],
       accentColor: 'var(--primary)',
       accentGlow: 'var(--glow)',
       gridClass: 'lg:col-span-7',

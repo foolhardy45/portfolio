@@ -93,13 +93,19 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
 export class AboutPageComponent {
   protected readonly timeline = [
     {
+      period: '2026 — 2029',
+      title: 'ESIEA - École d\'ingénieurs en informatique et systèmes d\'information',
+      description: 'Formation d\'ingénieur en informatique avec une spécialisation en développement logiciel et systèmes d\'information. ET cybersécurité.',
+      tag: 'Formation',
+    },
+    {
       period: '2024 — Présent',
       title: 'Alternance Développeur Fullstack chez Consilia Data',
       description: 'Conception et développement d\'applications web en Angular et Python chez Consilia Data.',
       tag: 'Expérience - Formation',
     },
     {
-      period: '2023 — 2026',
+      period: '2022 — 2026',
       title: 'BUT Informatique en alternance',
       description: 'Formation intensive couvrant le développement frontend, backend, les bases de données et les méthodologies agiles.',
       tag: 'Formation',
