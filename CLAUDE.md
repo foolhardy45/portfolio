@@ -1,4 +1,4 @@
-# Portfolio — Tayrell Music
+# Portfolio — Tayrell Ajinca
 
 Site portfolio personnel pour présenter mes projets, compétences et parcours.
 Monorepo fullstack : Angular 20 (frontend) + Flask 3.1 (backend) + PostgreSQL.
